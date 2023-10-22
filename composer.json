@@ -1,8 +1,4 @@
 {
 	"name":"kperrottet/crm-box-config",
-	"type":"vcs",
-	"require": {
-        "composer/installers": "~1.0"
-    },
 	"homepage":"https://github.com/kperrottet/crm-box-config"
 }
