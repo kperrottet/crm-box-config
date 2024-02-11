@@ -1,0 +1,209 @@
+{
+   "labels":{
+      "en":"Lock user",
+      "fr":"Bloquer utilisateur"
+   },
+   "type":{
+      "code":"US_LOCK",
+      "description":{
+         "labels":{
+            "fr":"Blocque un utilisateur",
+            "en":"Lock a user"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "available_in":[
+      "page_userProfile"
+   ],
+   "context":{
+      "function":"getParty",
+      "entity":"user"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "cancellation":{
+      "state":"cancelled",
+      "warning":{
+         "title":{
+            "labels":{
+               "fr":"titre modal annuller",
+               "en":"Ttitle modal"
+            }
+         },
+         "message":{
+            "labels":{
+               "fr":"Voulez vous annuler ce process ?",
+               "en":"Ttitle modal message"
+            }
+         },
+         "button_close":{
+            "labels":{
+               "fr":"Fermer",
+               "en":"Close"
+            }
+         },
+         "button_ok":{
+            "labels":{
+               "fr":"Oui",
+               "en":"OK"
+            }
+         }
+      }
+   },
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process bloquer utilisateur créé",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process lock user created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process bloquer utilisateur mis à jour",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process lock user updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+      ],
+      "edit":[
+         "user",
+         "super_admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+         ],
+         "edit":[
+            "super_admin",
+            "admin",
+            "user"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-person-fill",
+         "color":"rgb(245,246,247)",
+         "bgcolor":"green"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "done":{
+         "labels":{
+            "en":"User locked",
+            "fr":"Utilisateur Bloqué"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            {
+               "name":"lock_user",
+               "config_file":"task_user_update.json"
+            }
+         ],
+         "initial_values":{
+            "state":"locked"
+         },
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+						{
+                           "type":"widget_taskDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Détail tâches",
+                                 "en":"Tasks details"
+                              }
+                           }
+                        }
+                        
+                     ]
+                  },
+                  {
+                     "width":9,
+                     "widgets":[
+                        {
+                           "type":"widget_alert",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Utilisateur bloqué",
+                                 "en":"User locked"
+                              },
+                              "type":"success",
+                              "dismissable":true
+                           }
+                        },
+                        {
+                           "type":"widget_createdEntity",
+                           "parameters":{
+                              "entity":[
+                                 
+                              ]
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            
+         ],
+         "confirmUnload":false
+      }
+   }
+}

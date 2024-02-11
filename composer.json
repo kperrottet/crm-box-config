@@ -1,0 +1,27 @@
+{
+   "name":"crm-box.cloud/crm",
+   "description":"crm v 0.0.5",
+   "type":"project",
+   "authors":[
+      {
+         "name":"kevin perrottet"
+      }
+   ],
+   "minimum-stability":"stable",
+   "require":{
+      "darkflib/php-qrcode":"dev-master",
+      "jackocnr/intl-tel-input":"18.2.1",
+      "spomky-labs/otphp":"11.2",
+      "phpmailer/phpmailer":"6.8.1",
+      "spipu/html2pdf":"5.2.8",
+      "vlucas/phpdotenv": "5.5"
+   },
+   "config":{
+      "vendor-dir":"../engine/libraries/external"
+   },
+   "autoload": {
+    "psr-4": {
+        "Dotenv\\": "engine/libraries/external/Dotenv/src/"
+    }
+   }
+}

@@ -1,0 +1,7 @@
+Dear {firstName} {lastName},
+
+We're thrilled to welcome you to our CRM platform. With this system, you can efficiently manage your data, enhance customer relationships, and drive business growth. We're here to support you every step of the way. Feel free to reach out for assistance or questions.
+
+Thank you for choosing us. Welcome to our CRM community. We look forward to your success.
+
+Best regards.

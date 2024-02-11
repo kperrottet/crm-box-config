@@ -1,0 +1,41 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":false
+   },
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":12,
+               "widgets":[
+				{
+                     "type":"widget_camera",
+                     "parameters":{}
+				}
+               ]
+            }
+         ]
+      }
+   ]
+}

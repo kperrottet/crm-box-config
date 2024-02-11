@@ -1,0 +1,198 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":true,
+      "actions":true,
+      "lineage":false
+   },
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_banner",
+         "parameters":{
+            "background-color":"#fcba03",
+            "color":"#eee",
+            "title":"Welcome %firstName %lastName (%username)"
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":4,
+               "widgets":[
+                  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "embeded":true,
+                        "options":{
+                           "chart":{
+                              "type":"line"
+                           }
+                        }
+                     }
+                  },
+				  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "options":{
+                           "chart":{
+                              "type":"donut"							  
+                           }
+                        }
+                     }
+                  }
+               ]
+            },
+            {
+               "width":4,
+               "widgets":[
+                  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"bi bi-caret-right-square",
+                        "labels":{
+                           "fr":"essai pie chart ICO",
+                           "en":"test pie chart"
+                        },
+                        "embeded":true,
+                        "options":{
+                           "chart":{
+                              "type":"pie"							  
+                           }
+                        }
+                     }
+                  },
+				  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "options":{
+                           "chart":{
+                              "type":"area"
+                           }
+                        }
+                     }
+                  }
+               ]
+            },
+            {
+               "width":4,
+               "widgets":[
+                  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "embeded":true,
+                        "options":{
+                           "chart":{
+                              "type":"donut"							  
+                           },
+						   "plotOptions":
+							{
+								"pie":
+									{
+										"donut":
+											{
+												"labels":
+													{
+														"show":true,
+														"total":{"show":true}
+													}
+											}
+									}
+							}
+                        }
+                     }
+                  }
+               ,
+				  {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "options":{
+                           "chart":{
+                              "type":"candlestick"
+                           }
+                        }
+                     }
+                  }
+				  ]
+            }
+         ]
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+		 
+		 {
+               "width":8,
+               "widgets":[
+			   
+			   {
+                     "type":"widget_chart",
+                     "parameters":{
+                        "icon":"",
+                        "labels":{
+                           "fr":"essai pie chart",
+                           "en":"test pie chart"
+                        },
+                        "options":{
+                           "chart":{
+                              "type":"candlestick",
+							  "height":400
+                           }
+                        }
+                     }
+                  }
+			   
+			   ]
+		 },
+		 
+		 {
+               "width":4,
+               "widgets":[]
+		 }
+            
+         ]
+      }
+   ]
+}

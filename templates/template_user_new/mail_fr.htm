@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CRM Box - Welcome</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header img {
+            max-width: 300px;
+            height: auto;
+        }
+        .content {
+            padding: 20px;
+        }
+		.content img {
+            max-width: 300px;
+            height: auto;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <img src="cid:logo_1.png" alt="Your Company Logo">
+            <h1>Bienvenue</h1>
+</div>
+<div class="content">
+
+<p>Cher {firstName} {lastName}</p>
+<p>Nous sommes heureux de vous informer que votre compte utilisateur a été créé avec succès dans notre système CRM. Bienvenue sur notre plateforme, et merci de nous avoir choisis pour vos besoins en CRM.</p>
+<p>Voici les détails de votre compte utilisateur :
+<ul>
+<li>Nom d'utilisateur : {username}</li>
+<li>Adresse e-mail : {email}</li>
+<li>Clé 2FA (authentification Google) : {secret_2FA}</li>
+<li>ID utilisateur : {uniqid}</li>
+</ul>
+</p>
+<p>Avec votre compte maintenant actif, vous pouvez vous connecter à notre plateforme CRM en utilisant le nom d'utilisateur et le mot de passe que vous avez fournis pour commencer à explorer nos fonctionnalités et gérer efficacement vos relations avec les clients.</p>
+
+Cordialement,
+<p>
+The CRM-box team
+</p>
+
+        </div>
+        <div class="footer">
+            <p>© 2023 crm-box.cloud. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

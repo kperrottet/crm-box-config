@@ -1,0 +1,153 @@
+{
+   "labels":{
+      "en":"Create new Doc",
+      "fr":"Créer Nv Doc"
+   },
+   "type":{
+      "code":"TSTDOC",
+      "description":{
+         "labels":{
+            "fr":"test creer nv doc",
+            "en":"test create new doc"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "available_in":[
+   ],
+   "context":{
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         "user"
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            "user"
+         ],
+         "edit":[
+            "user",
+            "admin"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-postcard",
+         "color":"#FFF",
+         "bgcolor":"#520dc2"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "new":{
+         "labels":{
+            "en":"Capure and Scan",
+            "fr":"Dérail et scan"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+		 {
+               "name":"test_createDoc",
+               "config_file":"task_createDocument.json"
+            }
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":6,
+                     "widgets":[
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        
+                     
+					 {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"process dyn",
+                                 "fr":"process dynamique"
+                              }
+                           }
+                        }]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[]
+      }
+      
+   }
+}

@@ -1,0 +1,480 @@
+{
+   "name":"IdentityDocument",
+   "labels":{
+      "en":"Identity Document",
+      "fr":"Pièce d'identité"
+   },
+   "icon":"bi bi-postcard",
+   "parents":[
+      "brand"
+   ],
+   "unicity":{
+      "parent":true,
+      "characteristics":[
+	  ["documentNumber"]
+      ]
+   },
+   "db_table":"identityDocument",
+   "default_page":"page_IdentityDocumentDetails",
+   "default_process":"process_newIdentityDocument",
+   "lineage_tree":{
+      "title":"<strong>ID</strong> %firstName %lastName",
+      "characteristics":[
+         "state",
+		 "documentNumber",
+         "firstName",
+         "lastName"
+      ]
+   },
+   "characteristics":[
+      {
+         "name":"firstName",
+         "type":"text",
+         "data_id":"firstName",
+         "mandatory":true,
+         "labels":{
+            "en":"First name",
+            "fr":"Prénom(s)"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               "super_admin"
+            ],
+            "edit":[
+               "user",
+               "admin",
+               "super_admin"
+            ]
+         }
+      },
+	  {
+         "name":"id_picture",
+         "type":"canvas",
+         "mandatory":false,
+         "labels":{
+            "en":"test canvas",
+            "fr":"test canvas image"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               "super_admin"
+            ],
+            "edit":[
+               "user",
+               "admin",
+               "super_admin"
+            ]
+         }
+      },
+	  {
+         "name":"id_json",
+         "type":"json",
+         "mandatory":false,
+         "labels":{
+            "en":"test canvas",
+            "fr":"test json"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               "super_admin"
+            ],
+            "edit":[
+               "user",
+               "admin",
+               "super_admin"
+            ]
+         }
+      },
+	  {
+         "name":"id_mrz2",
+         "type":"multiInput",
+         "labels":{
+            "en":"MRZ",
+            "fr":"MRZ"
+         },
+         "inputs":[
+            {
+               "name":"line_0",
+               "labels":{
+                  "en":"line 1",
+                  "fr":"line 1"
+               }
+            },
+            {
+               "name":"1",
+               "labels":{
+                  "en":"line 2",
+                  "fr":"ligne 2"
+               }
+            },
+            {
+               "name":"2",
+               "labels":{
+                  "en":"line 3",
+                  "fr":"ligne 3"
+               }
+            }
+         ],
+         "mandatory":false,		 
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               "user",
+               "super_admin"
+            ]
+         }
+      },
+      {
+         "name":"lastName",
+         "type":"text",
+         "data_id":"lastName",
+         "mandatory":true,
+         "labels":{
+            "en":"last name",
+            "fr":"Nom de famille"
+         },
+         "disabled":false,
+         "validation":{
+            "text-transform":"capitalize"
+         },
+         "rights":{
+            "read":[
+               "super_admin"
+            ],
+            "edit":[
+               "user",
+               "admin",
+               "super_admin"
+            ]
+         }
+      },
+      {
+         "name":"documentType",
+         "type":"monoselect",
+		 "mandatory":true,
+         "labels":{
+            "en":"Document type",
+            "fr":"Type de document"
+         },
+         "value_type":"static",
+         "value":[
+            {
+               "value":"P",
+               "labels":{
+                  "en":"Passport",
+                  "fr":"Passeport"
+               }
+            },
+            {
+               "value":"ID",
+               "labels":{
+                  "en":"National ID",
+                  "fr":"Carte Nationale d'identité (ID)"
+               }
+            },
+            {
+               "value":"I",
+               "labels":{
+                  "en":"National ID",
+                  "fr":"Carte Nationale d'identité (I)"
+               }
+            }
+         ],
+		 "listing":{
+            "filter":{
+               "indexed":true,
+               "type":"radio"
+            }
+         }
+      },
+      {
+         "name":"sex",
+         "type":"monoselect",
+		 "mandatory":true,
+         "labels":{
+            "en":"Gender",
+            "fr":"Sexe"
+         },
+         "value_type":"static",
+		 "listing":{
+            "filter":{
+               "indexed":true,
+               "type":"radio"
+            }
+         },
+         "value":[
+            {
+               "value":"male",
+               "labels":{
+                  "en":"Male",
+                  "fr":"Homme"
+               }
+            },
+            {
+               "value":"female",
+               "labels":{
+                  "en":"Female",
+                  "fr":"Femme"
+               }
+            }
+         ]
+      },
+      {
+         "name":"nationality",
+         "type":"monoselect",
+		 "mandatory":true,
+         "labels":{
+            "en":"Nationality",
+            "fr":"Nationalité"
+         },
+         "value_type":"static",
+         "value":[
+            {
+               "value":"FRA",
+               "labels":{
+                  "en":"French",
+                  "fr":"France"
+               }
+            },
+            {
+               "value":"HUN",
+               "labels":{
+                  "en":"Hungary",
+                  "fr":"Hongrie"
+               }
+            },
+            {
+               "value":"NLD",
+               "labels":{
+                  "en":"Netherlands",
+                  "fr":"Pays-Bas"
+               }
+            },
+            {
+               "value":"POL",
+               "labels":{
+                  "en":"Poland",
+                  "fr":"Pologne"
+               }
+            },
+            {
+               "value":"BEL",
+               "labels":{
+                  "en":"Belgium",
+                  "fr":"Belgique"
+               }
+            },
+            {
+               "value":"EST",
+               "labels":{
+                  "en":"Estonia",
+                  "fr":"Estonie"
+               }
+            }
+         ]
+      },
+      {
+         "name":"documentNumber",
+         "type":"text",
+         "data_id":"documentNumber",
+         "mandatory":true,
+         "labels":{
+            "en":"Document Number",
+            "fr":"Numero de document"
+         },
+         "disabled":false,
+         "validation":{
+            "text-transform":"capitalize"
+         },
+         "rights":{
+            "read":[
+               "super_admin"
+            ],
+            "edit":[
+               "user",
+               "admin",
+               "super_admin"
+            ]
+         }
+      },
+      {
+         "name":"birthdate",
+         "type":"date",
+         "data_id":"birthdate",
+         "min":"1900-01-01",
+         "max":"2025-01-01",
+         "mandatory":true,
+         "labels":{
+            "en":"Birth Date",
+            "fr":"Date de naissance"
+         },
+         "disabled":false,
+		 
+		 
+         "listing":{
+            "type":"date"
+         }
+		 
+		 ,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         },
+         "validation":{
+            "tip":{
+               "labels":{
+                  "fr":"timeZfr",
+                  "en":"timeZ en"
+               }
+            },
+            "invalid-feedback":{
+               "labels":{
+                  "en":"error message for date",
+                  "fr":"message erreur pour date"
+               }
+            }
+         }
+      },
+      {
+         "name":"expirationDate",
+         "type":"date",
+         "data_id":"expirationDate",
+         "min":"2000-01-01",
+         "max":"2052-01-01",
+         "mandatory":true,
+         "labels":{
+            "en":"Expiration date",
+            "fr":"Date expiration"
+         },
+		 "listing":{
+            "type":"date"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         },
+         "validation":{
+            "tip":{
+               "labels":{
+                  "fr":"timeZfr",
+                  "en":"timeZ en"
+               }
+            },
+            "invalid-feedback":{
+               "labels":{
+                  "en":"error message for date",
+                  "fr":"message erreur pour date"
+               }
+            }
+         }
+      },      
+      {
+         "name":"state",
+         "type":"monoselect",
+         "data_id":"state",
+         "icon":"bi bi-translate",
+         "labels":{
+            "en":"State",
+            "fr":"Etat"
+         },
+         "value_type":"dynamic",
+         "value":{
+            "function_name":"getLifeCycleList",
+            "function_param":"identity_document"
+         },
+         "mandatory":true,
+         "disabled":false,
+         "listing":{
+            "filter":{
+               "indexed":true,
+               "type":"radio"
+            },
+            "type":"state"
+         },
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               "super_admin"
+            ]
+         }
+      }
+   ],
+   "lifecycle":{
+      "valid":{
+         "labels":{
+            "en":"Valid",
+            "fr":"Valide"
+         },
+         "bootstrap_class":"success",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"activate",
+                  "fr":"activer"
+               },
+               "process":"activate",
+               "target":"expired"
+            },
+			{
+               "labels":{
+                  "en":"activate",
+                  "fr":"activer"
+               },
+               "process":"activate",
+               "target":"invalid"
+            }
+         ]
+      },
+      "expired":{
+         "labels":{
+            "en":"Expired",
+            "fr":"Expiré"
+         },
+         "bootstrap_class":"warning",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"terminate",
+                  "fr":"finir"
+               },
+               "process":"unlock",
+               "target":"invalid"
+            }
+         ]
+      },
+      "invalid":{
+         "labels":{
+            "en":"Invalid",
+            "fr":"Invalide"
+         },
+         "bootstrap_class":"danger",
+         "transitions":[
+            
+         ],
+         "access":{
+            "auth":false,
+            "labels":{
+               "fr":"terminated welcome message",
+               "en":"message terminé"
+            }
+         }
+      }
+   }
+}

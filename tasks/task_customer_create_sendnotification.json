@@ -1,0 +1,119 @@
+{
+   "name":"send_notification",
+   "execute":{
+      "function":"task_sendnotification",
+      "delay":"+0 minute",
+      "repetition":"unique"
+   },
+   "parameters":{
+      "to":[
+         {
+            "type":"dynamic",
+            "email":"process->data->content_consolidated->email",
+            "name":"process->data->content_consolidated->lastName"
+         }
+      ],
+      "cc":[
+         
+      ],
+      "bcc":[
+         
+      ],
+      "content":{
+         "date":{
+            "type":"function",
+            "function":"datetime",
+            "parameters":[
+               "Y-m-d H:i:s"
+            ]
+         },
+         "firstName":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->firstName"
+         },
+         "lastName":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->lastName"
+         },
+         "rand":{
+            "type":"function",
+            "function":"rand",
+            "parameters":[
+               1,
+               100
+            ]
+         },
+         "date_1":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->test"
+         },
+         "time_1":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->test2"
+         },
+         "state":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->state2",
+            "default":"zombie_param"
+         },
+         "color":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->color"
+         }
+      },
+      "template":{
+         "template_folder":"template_customer_new",
+         "template_version":{
+            "type":"dynamic",
+            "target":"process->data->content_consolidated->language"
+         }
+      }
+   },
+   "dependances":[
+      
+   ],
+   "communication":{
+      "creation":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i> %task_name created",
+               "en":"<i class=\"bi bi-check-circle m-2\"></i> %task_name created"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name"
+            }
+         }
+      },
+      "execution":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i>task %task_name executed correctly",
+               "en":"<i class=\"bi bi-info-circle m-2\"></i>task %task_name executed correctly"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to execute task %task_name <hr>%error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to execute task %task_name <hr>%error"
+            }
+         }
+      }
+   }
+}

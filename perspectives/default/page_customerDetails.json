@@ -1,0 +1,653 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":true
+   },
+   "context":{
+      "function":"getParty",
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "confirmUnload":false,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widgetPageTitle",
+         "parameters":{
+            "type":"title",
+            "icon":{
+               "value":"bi bi-person",
+               "color":"#fff",
+               "background":"#198754"
+            },
+            "string":"Client : <b>%firstName %lastName</b> <sup style=\"text-transform:uppercase;\">%uniqid</sup>",
+            "button":[
+               {
+                  "type":"button_lifeCycle",
+                  "parameters":{
+                     "entity":"customer"
+                  },
+                  "rights":{
+                     "read":[
+                        
+                     ]
+                  }
+               },
+               {
+                  "type":"refresh",
+                  "parameters":[
+                     
+                  ],
+                  "rights":{
+                     "read":[
+                        "user",
+                        "admin"
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":9,
+               "widgets":[
+                  {
+                     "type":"tabs",
+                     "content":[
+                        {
+                           "name":"tab1",
+                           "labels":{
+                              "fr":"Détail Client",
+                              "en":"Customer details"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"user_details",
+                                 "type":"layout",
+                                 "columns":[
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "labels":{
+                                                   "fr":"Identité",
+                                                   "en":"Identity"
+                                                },
+												"embeded":true,
+                                                "entity":"customer",
+                                                "characteristics":[
+												"title",
+                                                   "firstName",
+                                                   "lastName",
+                                                   "dob",
+                                                   "place_of_birth"
+                                                ]
+                                             }
+                                          },
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "labels":{
+                                                   "fr":"Communication",
+                                                   "en":"Communication"
+                                                },
+												"embeded":true,
+                                                "entity":"customer",
+                                                "characteristics":[
+                                                   "phoneNumber",
+                                                   "email",
+                                                   "language",
+                                                   "adress"
+                                                ]
+                                             }
+                                          }
+                                       ]
+                                    },
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "labels":{
+                                                   "fr":"Document identité",
+                                                   "en":"ID document"
+                                                },
+												"embeded":true,
+                                                "entity":"customer",
+                                                "characteristics":[
+                                                   "ID_type",
+                                                   "id_number",
+                                                   "id_validaty_date"
+                                                ]
+                                             }
+                                          },
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "labels":{
+                                                   "fr":"Contact commercial",
+                                                   "en":"sale contact"
+                                                },
+												"embeded":true,
+                                                "entity":"customer",
+                                                "characteristics":[
+                                                   "sale_contact"
+                                                ]
+                                             }
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"Personnes de contact",
+                              "en":"Contact persons"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widget_entityList",
+                                 "parameters":{
+                                    "format":{
+                                       "title":{
+                                          "labels":{
+                                             "fr":"Liste des personnes de Contact",
+                                             "en":"Contact Person list"
+                                          }
+                                       },
+                                       "dateTime":{
+                                          "timeZone":"Asia\/Bangkok",
+                                          "dateTimeFormat":"d-m-Y H:i:s",
+                                          "showTimeZone":true
+                                       },
+                                       "embeded":true
+                                    },
+                                    "entity":"contactPerson",
+                                    "characteristics":[
+                                       "uniqid",
+                                       "firstName",
+                                       "lastName",
+                                       "state"
+                                    ],
+                                    "exports":[
+                                       {
+                                          "name":"HTML",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"HTML (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"CSV",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"CSV (no headers)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"JSON",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"JSON (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       }
+                                    ],
+                                    "filters":{
+                                       "searchbar":true,
+                                       "filters":true
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"Adresses",
+                              "en":"Adresses"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widget_entityList",
+                                 "parameters":{
+                                    "format":{
+                                       "title":{
+                                          "labels":{
+                                             "fr":"Liste de toutes les adresses",
+                                             "en":"Complete Adresses list"
+                                          }
+                                       },
+                                       "dateTime":{
+                                          "timeZone":"Asia\/Bangkok",
+                                          "dateTimeFormat":"d-m-Y H:i:s",
+                                          "showTimeZone":true
+                                       },
+                                       "embeded":true
+                                    },
+                                    "entity":"adress",
+                                    "characteristics":[
+                                       "uniqid",
+                                       "streetNumber",
+                                       "streetName",
+                                       "zipCode",
+                                       "city",
+                                       "country",
+                                       "state"
+                                    ],
+                                    "exports":[
+                                       {
+                                          "name":"HTML",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"HTML (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"CSV",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"CSV (no headers)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"JSON",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"JSON (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       }
+                                    ],
+                                    "filters":{
+                                       "searchbar":true,
+                                       "filters":true
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+						{
+                           "name":"tab1",
+                           "labels":{
+                              "fr":"Notifications",
+                              "en":"Notifications"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"notifs",
+                                 "type":"widget_notifications",
+                                 "parameters":{
+                                    "embeded":false,
+                                    "labels":{
+                                       "fr":"Notification",
+                                       "en":"Notifs"
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"Commentaire & Fichiers",
+                              "en":"Comments & Files"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"user_details",
+                                 "type":"layout",
+                                 "columns":[
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "type":"widget_filesAttached",
+                                             "parameters":{
+                                                "allow_upload":true,
+                                                "embeded":true,
+                                                "ug_file":[
+                                                   "admin2",
+                                                   "user"
+                                                ],
+                                                "accepted_format":[
+                                                   "application/pdf",
+                                                   "text/plain",
+                                                   "image/png",
+                                                   "image/jpeg"
+                                                ],
+                                                "labels":{
+                                                   "fr":"Fichiers joints",
+                                                   "en":"Attached files"
+                                                },
+                                                "display":"large"
+                                             },
+                                             "rights":{
+                                                "read":[
+                                                   
+                                                ],
+                                                "edit":[
+                                                   "super_admin"
+                                                ]
+                                             }
+                                          }
+                                       ]
+                                    },
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "type":"widget_comments",
+                                             "parameters":{
+                                                "placeHolder":{
+                                                   "labels":{
+                                                      "fr":"Commentaire",
+                                                      "en":"Comment"
+                                                   }
+                                                },
+                                                "submit_button":{
+                                                   "labels":{
+                                                      "fr":"Enregistrer",
+                                                      "en":"Save"
+                                                   }
+                                                },
+                                                "Error_submission":{
+                                                   "labels":{
+                                                      "fr":"Probleme avec enregistrement du commentaire",
+                                                      "en":"There was an error adding your comment."
+                                                   }
+                                                },
+                                                "embeded":true,
+                                                "labels":{
+                                                   "fr":"Commtaires",
+                                                   "en":"Comments"
+                                                },
+                                                "maxLength":350
+                                             }
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"Documents identités",
+                              "en":"IDs"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widget_entityList",
+                                 "parameters":{
+                                    "format":{
+                                       "title":{
+                                          "labels":{
+                                             "fr":"Liste des documents d'identité",
+                                             "en":"Identity Document list"
+                                          }
+                                       },
+                                       "dateTime":{
+                                          "timeZone":"Asia\/Bangkok",
+                                          "dateTimeFormat":"d-m-Y H:i:s",
+                                          "showTimeZone":true
+                                       },
+                                       "embeded":true
+                                    },
+                                    "entity":"identity_document",
+                                    "characteristics":[
+                                       "uniqid",
+                                       "documentType",
+                                       "documentNumber",
+                                       "expirationDate",
+                                       "state"
+                                    ],
+                                    "exports":[
+                                       {
+                                          "name":"HTML",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"HTML (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"CSV",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"CSV (no headers)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"JSON",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"JSON (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       }
+                                    ],
+                                    "filters":{
+                                       "searchbar":true,
+                                       "filters":true
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"Arbre",
+                              "en":"Tree"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"user_details",
+                                 "type":"layout",
+                                 "columns":[
+                                    {
+                                       "width":12,
+                                       "widgets":[
+                                          {
+                                             "name":"abb",
+                                             "type":"widget_tree",
+                                             "parameters":{
+                                                "order":[
+                                                   "contactPerson"
+                                                ],
+                                                "root":true,
+                                                "embeded":false,
+                                                "categorize":true,
+                                                "labels":{
+                                                   "fr":"arbre des entites",
+                                                   "en":"tree of entities"
+                                                }
+                                             }
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"PIM caracteristiques",
+                              "en":"PIM caracteristiques"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widgetcharacteristicsAccordion",
+                                 "parameters":{
+                                    "entity":"customer"
+                                 },
+                                 "rights":{
+                                    "read":[
+                                       
+                                    ],
+                                    "edit":[
+                                       
+                                    ]
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"RAW",
+                              "en":"RAW"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"abb",
+                                 "type":"raw",
+                                 "parameters":{
+                                    "source":"context",
+                                    "format":"php",
+                                    "comment":"\/\/comment 2nd comment",
+                                    "theme":"code_dark",
+                                    "labels":{
+                                       "en":"context",
+                                       "fr":"context"
+                                    }
+                                 }
+                              }
+                           ]
+                        }
+                     ],
+                     "parameters":{
+                        "name":"a",
+                        "height":"full",
+                        "entity":"user"
+                     }
+                  }
+               ]
+            },
+            {
+               "width":3,
+               "widgets":[
+                  {
+                     "type":"widget_timeline",
+                     "parameters":{
+                        "labels":{
+                           "en":"timeline",
+                           "fr":"ligne de vie"
+                        },
+                        "embeded":true
+                     }
+                  },
+                  {
+                     "type":"lifeCycleSVG",
+                     "parameters":{
+                        "entity":"customer",
+                        "mode":"B"
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

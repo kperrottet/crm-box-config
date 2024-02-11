@@ -1,0 +1,114 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":true
+   },
+   "context":{
+      "function":"getParty",
+      "entity":"identity_document"
+   },
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_alert",
+         "parameters":{
+            "labels":{
+               "fr":"v1 page customer",
+               "en":"v1 of page customer"
+            },
+            "type":"warning",
+            "dismissable":true
+         }
+      },
+      {
+         "type":"widgetPageTitle",
+         "parameters":{
+            "type":"title",
+            "icon":{
+               "value":"bi bi-postcard",
+               "color":"#fff",
+               "background":"#520dc2"
+            },
+            "string":"Contact Person : <b>%firstName %lastName</b>",
+            "button":[
+               {
+                  "type":"button_lifeCycle",
+                  "parameters":{
+                     "entity":"identity_document"
+                  },
+                  "rights":{
+                     "read":[
+                        
+                     ]
+                  }
+               },
+               {
+                  "type":"refresh",
+                  "parameters":[
+                     
+                  ],
+                  "rights":{
+                     "read":[
+                        "user",
+                        "admin"
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":9,
+               "widgets":[
+                  {
+                     "name":"a",
+                     "type":"widget_PimDetails",
+                     "parameters":{
+                        "labels":{
+                           "fr":"Identité",
+                           "en":"Identity"
+                        },
+						"embeded":true,
+                        "entity":"identity_document",
+                        "characteristics":[
+                        ]
+                     }
+                  }
+               ]
+            },
+            {
+               "width":3,
+               "widgets":[
+                  {
+                     "type":"lifeCycleSVG",
+                     "parameters":{
+                        "entity":"identity_document",
+                        "mode":"A"
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

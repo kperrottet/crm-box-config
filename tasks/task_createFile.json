@@ -1,0 +1,97 @@
+{
+   "name":"task_createFile",
+   "execute":{
+      "function":"task_createFile",
+      "delay":"+0 minute",
+      "repetition":"unique"
+   },
+   "parameters":{
+      "index_file":{
+         "index":true,
+		 "data":{
+			 "name":"scan picture",
+			"description":"bla bla bla"
+			}
+         
+      },
+      "create_file":{
+         "MIME_type":"images/png",
+         "folder":"documents/ID/",
+         "canvas_input_id":"id_picture",
+         "filename":"string",
+         "thumbnail":{
+            "create":true,
+            "extension":"_thumbnail",
+            "reference":"height",
+            "size":150
+         }
+      }
+   },
+   "dependances":[
+      
+   ],
+   "communication":{
+      "creation":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i>Task %task_name created",
+               "en":"<i class=\"bi bi-check-circle m-2\"></i>Tâche %task_name créée"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name"
+            }
+         }
+      },
+      "execution":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i>task %task_name executed correctly",
+               "en":"<i class=\"bi bi-info-circle m-2\"></i>task %task_name executed correctly"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Echec d'execution de la tâche <b>Créer fichier</b>",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to execute task <b>Create id file</b>"
+            }
+         }
+	  },
+	  "errors":{
+		    "format_image_error":{
+            "type":"alert",
+            "class":"warning",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Erreur : le format image est inconnu %error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Error : Unknown format %error"
+            }
+         },
+		    "MIME_error":{
+            "type":"alert",
+            "class":"warning",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Erreur : le format MIME est inconnu %error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Error : Unknown format %error"
+            }
+         }
+      }
+   }
+}

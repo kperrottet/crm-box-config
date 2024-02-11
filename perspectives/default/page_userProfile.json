@@ -1,0 +1,346 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context":{
+      "function":"getParty",
+      "entity":"user"
+   },
+   "context_menu":true,
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widgetPageTitle",
+         "parameters":{
+            "type":"title",
+            "icon":{
+               "value":"bi bi-person-circle",
+               "color":"#fff",
+               "background":"#801f4f"
+            },
+            "string":"Utilisateur : <b>%username</b> (%firstName %lastName)",
+            "button":[
+               {
+                  "type":"button_lifeCycle",
+                  "parameters":{
+                     "entity":"user"
+                  },
+                  "rights":{
+                     "read":[
+                        
+                     ]
+                  }
+               },
+               {
+                  "type":"refresh",
+                  "parameters":[
+                     
+                  ],
+                  "rights":{
+                     "read":[
+                        "user",
+                        "admin"
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":8,
+               "widgets":[
+                  {
+                     "type":"tabs",
+                     "content":[
+                        {
+                           "name":"tab1",
+                           "labels":{
+                              "fr":"Détail Utilisateur",
+                              "en":"User details"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"user_details",
+                                 "type":"layout",
+                                 "columns":[
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "embeded":true,
+                                                "labels":{
+                                                   "fr":"Identité",
+                                                   "en":"Identity"
+                                                },
+                                                "entity":"user",
+                                                "characteristics":[
+                                                   "username",
+                                                   "firstName",
+                                                   "name",
+                                                   "email",
+                                                   "secret_2FA",
+                                                   "codename"
+                                                ]
+                                             }
+                                          }
+                                          
+                                          
+                                       ]
+                                    },
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "name":"a",
+                                             "type":"widget_PimDetails",
+                                             "parameters":{
+                                                "embeded":true,
+                                                "labels":{
+                                                   "fr":"Groupes et Lifecycle",
+                                                   "en":"Groups and Lifecycle"
+                                                },
+                                                "entity":"user",
+                                                "characteristics":[
+                                                   "ug",
+                                                   "language",
+                                                   "state",
+                                                   "perspective"
+                                                ]
+                                             }
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"2FA",
+                              "en":"2FA"
+                           },
+                           "widgets":[
+						   {
+                                             "name":"a",
+                                             "type":"widget_2FA_QR",
+                                             "parameters":{
+                                                "embeded":false,
+                                                "labels":{
+                                                   "fr":"code QR",
+                                                   "en":"QR code"
+                                                }
+                                             }
+                                          }
+										  ]
+						},
+						{
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"Clefs API",
+                              "en":"API keys"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widget_entityList",
+                                 "parameters":{
+                                    "format":{
+                                       "title":{
+                                          "labels":{
+                                             "fr":"Liste des clefs API",
+                                             "en":"API key list"
+                                          }
+                                       },
+                                       "dateTime":{
+                                          "timeZone":"Asia\/Bangkok",
+                                          "dateTimeFormat":"d-m-Y H:i:s",
+                                          "showTimeZone":true
+                                       },
+                                       "embeded":true
+                                    },
+                                    "entity":"api_key",
+                                    "characteristics":[
+                                       "uniqid",
+                                       "key",
+                                       "state",
+                                       "endPoints"
+                                    ],
+                                    "exports":[
+                                       {
+                                          "name":"HTML",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"HTML (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"html",
+                                          "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"CSV",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"CSV (no headers)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       "separator",
+                                       {
+                                          "name":"JSON",
+                                          "separator":";",
+                                          "headers":true,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       },
+                                       {
+                                          "name":"JSON (no header)",
+                                          "separator":";",
+                                          "headers":false,
+                                          "format":"csv",
+                                          "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                                       }
+                                    ],
+                                    "filters":{
+                                       "searchbar":true,
+                                       "filters":true
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+                        
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"PIM caracteristiques",
+                              "en":"PIM caracteristiques"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widgetcharacteristicsAccordion",
+                                 "parameters":{
+                                    "entity":"user"
+                                 },
+                                 "rights":{
+                                    "read":[
+                                       
+                                    ],
+                                    "edit":[
+                                       
+                                    ]
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"RAW",
+                              "en":"RAW"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"abb",
+                                 "type":"raw",
+                                 "parameters":{
+                                    "source":"context",
+                                    "format":"php",
+                                    "comment":"\/\/comment 2nd comment",
+                                    "theme":"code_dark",
+                                    "labels":{
+                                       "en":"context",
+                                       "fr":"context"
+                                    }
+                                 }
+                              }
+                           ]
+                        }
+                     ],
+                     "parameters":{
+                        "name":"a",
+                        "height":"full",
+                        "entity":"user"
+                     }
+                  }
+               ]
+            },
+            {
+               "width":4,
+               "widgets":[
+			   {
+                     "type":"widget_timeline",
+                     "parameters":{
+                        "labels":{
+                           "en":"timeline",
+                           "fr":"ligne de vie"
+                        },
+                        "embeded":true
+                     }
+                  },
+                  {
+                     "type":"lifeCycleSVG",
+                     "parameters":{
+                        "entity":"user",
+                        "mode":"B"
+                     }
+                  },
+			   {
+         "type":"widget_alert",
+         "parameters":{
+            "labels":{
+               "fr":"v2 page user profile",
+               "en":"v2 of user profile page"
+            },
+            "type":"warning",
+            "dismissable":true
+         }
+      },
+                  {
+                     "name":"notifs",
+                     "type":"widget_notifications",
+                     "parameters":{
+                        "embeded":true,
+                        "labels":{
+                           "fr":"Notification",
+                           "en":"Notifs"
+                        }
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

@@ -1,0 +1,273 @@
+{
+   "id":"perspective_b",
+   "icon":"bi bi-gear",
+   "labels":{
+      "en":"back office user",
+      "fr":"utilisateur back office"
+   },
+   "description":{
+      "labels":{
+         "en":"perspective dedicated for administration",
+         "fr":"perspective pour les administrateurs"
+      }
+   },
+   "title":"CRM - v Agate",
+   "name":"demo perspective deux",
+   "home":{
+      "burger":{
+         "widgets":[
+            
+         ]
+      },
+      "top":{
+         "search":{
+            "labels":{
+               "fr":"personne de contact...",
+               "en":"contact pers..."
+            },
+			"widget_per_line":2,
+			"icon":true,
+            "entities":[
+               {
+                  "filename":"contactPerson",
+                  "name":"contactPerson",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state"
+                  ]
+               },
+               {
+                  "filename":"customer",
+                  "name":"customer",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state",
+                     "language"
+                  ]
+               },
+               {
+                  "filename":"user",
+                  "name":"user",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state",
+                     "language"
+                  ]
+               },
+               {
+                  "filename":"adress",
+                  "name":"adress",
+                  "characteristics":[
+                     "uniqid",
+                     "streetNumber",
+                     "streetName",
+                     "zipCode",
+                     "city",
+                     "country",
+                     "state"
+                  ]
+               }
+            ],
+            "dateTime":{
+               "timeZone":"Asia\/Bangkok",
+               "dateTimeFormat":"d-m-Y H:i:s",
+               "showTimeZone":true
+            }
+         },
+         "links":[
+            {
+               "page":"process_manager",
+               "data":"process_user_new",
+               "group":"button",
+               "target":"iframe",
+               "labels":{
+                  "en":"Create system user",
+                  "fr":"Creer utilisateur systeme"
+               },
+               "icon":{
+                  "icon":"bi bi-person-plus-fill",
+                  "class":"btn-success"
+               }
+            },
+            {
+               "page":"process_manager",
+               "data":"process_newUserGroup",
+               "group":"button",
+               "target":"iframe",
+               "labels":{
+                  "en":"Create UG",
+                  "fr":"Creer UG"
+               },
+               "icon":{
+                  "icon":"bi bi-people-fill",
+                  "class":"btn-success"
+               }
+            },
+            {
+               "page":"view",
+               "data":"page_admin_listEntities",
+               "group":"single",
+               "target":"iframe",
+               "labels":{
+                  "en":"List entities",
+                  "fr":"Liste des entites PIM"
+               }
+            },
+            {
+               "page":"view",
+               "data":"user",
+               "group":"single",
+               "target":"iframe",
+               "labels":{
+                  "en":"link 2",
+                  "fr":"lien 2"
+               }
+            },
+            {
+               "page":"process_manager",
+               "data":"process_newUser",
+               "group":"single",
+               "target":"iframe",
+               "labels":{
+                  "en":"Create system user",
+                  "fr":"Creer utilisateur systeme"
+               }
+            },
+            {
+               "page":"process_manager",
+               "data":"process_newCustomer",
+               "group":"single",
+               "target":"iframe",
+               "labels":{
+                  "en":"Create customer",
+                  "fr":"Creer client"
+               }
+            },
+            {
+               "group":"dropdown",
+               "labels":{
+                  "en":"Create",
+                  "fr":"Créer"
+               },
+               "links":[
+                  {
+                     "page":"process_manager",
+                     "data":"process_newUser",
+                     "group":"single",
+                     "target":"iframe",
+                     "labels":{
+                        "en":"Create system user",
+                        "fr":"Creer utilisateur systeme"
+                     }
+                  },
+                  {
+                     "page":"process_manager",
+                     "data":"process_newCustomer",
+                     "group":"single",
+                     "target":"iframe",
+                     "labels":{
+                        "en":"Create customer",
+                        "fr":"Creer client"
+                     }
+                  }
+               ]
+            },
+            {
+               "group":"dropdown",
+               "labels":{
+                  "en":"Lists",
+                  "fr":"Listes"
+               },
+               "links":[
+                  {
+                     "page":"view",
+                     "data":"page_processesList",
+                     "labels":{
+                        "en":"Processes list",
+                        "fr":"Liste des process"
+                     },
+                     "target":"iframe"
+                  },
+                  {
+                     "page":"view",
+                     "data":"page_usersList",
+                     "labels":{
+                        "en":"system user list",
+                        "fr":"liste utilisateur systeme"
+                     },
+                     "target":"iframe"
+                  },
+                  {
+                     "page":"view",
+                     "data":"page_customersList",
+                     "labels":{
+                        "en":"customers list",
+                        "fr":"liste clients"
+                     },
+                     "target":"iframe"
+                  }
+               ]
+            }
+         ],
+         "administration":[
+            {
+               "page":"view",
+               "data":"page_usersList",
+               "labels":{
+                  "en":"<i class=\"bi bi-person-circle\"></i> %username",
+                  "fr":"<i class=\"bi bi-person-circle\"></i> %username"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"divider"
+            },
+            {
+               "page":"view",
+               "data":"page_pimCustomer",
+               "labels":{
+                  "en":"Customer format",
+                  "fr":"Modèle Client"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"view",
+               "data":"page_pimUser",
+               "labels":{
+                  "en":"User format",
+                  "fr":"Modèle Utilisateur"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"view",
+               "data":"page_pimContactPerson",
+               "labels":{
+                  "en":"Contact Person format",
+                  "fr":"Modèle Personne de contact"
+               },
+               "target":"iframe"
+            }
+         ]
+      },
+      "homepage":{
+         "data":"page_customersList"
+      }
+   },
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "buser",
+         "badmin"
+      ]
+   }
+}

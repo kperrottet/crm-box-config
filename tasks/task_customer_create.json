@@ -1,0 +1,97 @@
+{
+   "name":"task_setEntity",
+   "execute":{
+      "function":"task_setEntity",
+      "delay":"+0 minute",
+      "repetition":"unique"
+   },
+   "parameters":{
+      "entity":"customer",
+      "target":"new"
+   },
+   "dependances":[
+      
+   ],
+   "communication":{
+      "creation":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i> %task_name created",
+               "en":"<i class=\"bi bi-check-circle m-2\"></i> %task_name created"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to created task %task_name"
+            }
+         }
+      },
+      "execution":{
+         "success":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000,
+            "labels":{
+               "fr":"<i class=\"bi bi-info-circle m-2\"></i>Creation du client reussie",
+               "en":"<i class=\"bi bi-info-circle m-2\"></i>Customer creation task : success"
+            }
+         },
+         "failure":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Echec d'execution de la tâche <b>%task_name</b>",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> FAILED to execute task <b>%task_name</b>"
+            }
+         }
+	  },
+	  "errors":{
+         "mandatory_field_empty":{
+            "type":"alert",
+            "class":"warning",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Erreur : <b>%field</b> est obligatoire et ne peut être vide<hr> %error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Error : <b>%field</b> is mandatory and cannot be empty<hr> %error"
+            }
+         },
+         "pattern_error":{
+            "type":"alert",
+            "class":"warning",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Erreur : pour <b>%field</b> la valeur ne correspond pas au format attendu.<br>Format attendu : %pattern <br>Valeur reçue : %value <hr> %error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Error : in <b>%field</b> value does not match expected pattern.<br>Expected format : %pattern <br>Value sent : %value<hr> %error"
+            }
+         },
+         "unicity_rules":{
+            "type":"alert",
+            "class":"warning",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Les règles d'unicité ne sont pas respectées <hr> %error",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Unicity rules are not respected <hr> %error"
+            }
+         },
+         "error_sql_failed":{
+            "type":"alert",
+            "class":"danger",
+            "dismissable":true,
+            "labels":{
+               "fr":"<i class=\"bi bi-exclamation-circle m-2\"></i> Erreur dans l'execution sql<hr> %sql_return",
+               "en":"<i class=\"bi bi-exclamation-circle m-2\"></i> Error in sql execution <hr> %sql_return"
+            }
+         }
+      }
+   }
+}

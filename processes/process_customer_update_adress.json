@@ -1,0 +1,501 @@
+{
+   "labels":{
+      "en":"Change customer adress",
+      "fr":"Changer adresse client"
+   },
+   "type":{
+      "code":"CUST_MOD_AD",
+      "description":{
+         "labels":{
+            "fr":"Change l'adresse du client parmi les addresses existantes",
+            "en":"Change customer adress among existing adresses"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "category":"customer_mgt",
+   "available_in":[
+      "page_usersList",
+      "page_customerDetails"
+   ],
+   "context":{
+      "function":"getParty",
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "cancellation":{
+      "state":"cancelled",
+      "warning":{
+         "title":{
+            "labels":{
+               "fr":"Annuler process",
+               "en":"Cancel process"
+            }
+         },
+         "message":{
+            "labels":{
+               "fr":"Voulez vous annuler ce process ?",
+               "en":"Do you want to cancel this process ?"
+            }
+         },
+         "button_close":{
+            "labels":{
+               "fr":"Fermer",
+               "en":"Close"
+            }
+         },
+         "button_ok":{
+            "labels":{
+               "fr":"Oui",
+               "en":"OK"
+            }
+         }
+      }
+   },
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         "user"
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            "user"
+         ],
+         "edit":[
+            "user",
+            "admin"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-person-gear",
+         "color":"rgb(245,246,247)",
+         "bgcolor":"green"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "new":{
+         "labels":{
+            "en":"Details",
+            "fr":"Détails"
+         },
+         "bootstrap_class":"primary",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "type":"widget_alert",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Ce process permet de choisir parmi les addresses existantes. Si vous souhaitez créer une nouvelle adresse, veuillez lancer le process 'créer nouvelle addresse' dans le context du client.",
+                                 "en":"This process allows to select among existing adresses. If you wish to create an adress not listed below, please run the process 'create new adress' in customer context."
+                              },
+                              "type":"warning",
+                              "dismissable":true,
+                              "class":"primary"
+                           }
+                        },
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Adresse",
+                                 "en":"Adress"
+                              },
+                              "embeded":true,
+                              "mode":"edit",
+                              "entity":"customer",
+                              "characteristics":[
+                                 "adress"
+                              ]
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "name":"aa",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Process codification",
+                                 "en":"Process codes"
+                              },
+                              "mode":"edit",
+                              "characteristics":[
+                                 {
+                                    "name":"id_process",
+                                    "type":"text",
+                                    "data_id":"id_process",
+                                    "icon":"bi bi-hash",
+                                    "prefix":"",
+                                    "suffix":"",
+                                    "labels":{
+                                       "en":"process manual code",
+                                       "fr":"codification process"
+                                    },
+                                    "mandatory":false,
+                                    "disabled":false,
+                                    "validation":{
+                                       "pattern":"[0-9]{13}",
+                                       "tip":{
+                                          "labels":{
+                                             "en":"format clue for text input",
+                                             "fr":"indice du format attendu pour input text"
+                                          }
+                                       },
+                                       "invalid-feedback":{
+                                          "labels":{
+                                             "en":"error message for input text",
+                                             "fr":"message erreur pour input text"
+                                          }
+                                       }
+                                    },
+                                    "rights":{
+                                       "read":[
+                                          
+                                       ],
+                                       "edit":[
+                                          
+                                       ]
+                                    }
+                                 }
+                              ]
+                           }
+                        },
+                        {
+                           "type":"widget_comments",
+                           "parameters":{
+                              "placeHolder":{
+                                 "labels":{
+                                    "fr":"Commentaire",
+                                    "en":"Comment"
+                                 }
+                              },
+                              "submit_button":{
+                                 "labels":{
+                                    "fr":"Enregistrer",
+                                    "en":"Save"
+                                 }
+                              },
+                              "Error_submission":{
+                                 "labels":{
+                                    "fr":"Probleme avec enregistrement du commentaire",
+                                    "en":"There was an error adding your comment."
+                                 }
+                              },
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Commtaires",
+                                 "en":"Comments"
+                              },
+                              "maxLength":350
+                           }
+                        },
+                        {
+                           "type":"widget_filesAttached",
+                           "parameters":{
+                              "allow_upload":true,
+                              "embeded":true,
+                              "ug_file":[
+                                 "admin2",
+                                 "user"
+                              ],
+                              "accepted_format":[
+                                 "application/pdf",
+                                 "text/plain",
+                                 "image/png",
+                                 "image/jpeg"
+                              ],
+                              "labels":{
+                                 "fr":"Fichiers joints",
+                                 "en":"Attached files"
+                              },
+                              "display":"large"
+                           },
+                           "rights":{
+                              "read":[
+                                 
+                              ],
+                              "edit":[
+                                 "super_admin"
+                              ]
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"save",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"text",
+               "parameters":{
+                  "labels":{
+                     "en":"|",
+                     "fr":"|"
+                  }
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"submit",
+               "parameters":{
+                  "class":"btn-success"
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            {
+               "target":"executed",
+               "labels":{
+                  "en":"Update customer",
+                  "fr":"Modifier client"
+               },
+               "process":"activate"
+            }
+         ]
+      },
+      "executed":{
+         "labels":{
+            "en":"Customer data modified",
+            "fr":"Informations client modifiées"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            {
+               "name":"set_entity",
+               "config_file":"task_customer_update.json"
+            }
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":8,
+                     "widgets":[
+                        {
+                           "type":"widget_createdEntity",
+                           "parameters":{
+                              "entity":[
+                                 
+                              ]
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":4,
+                     "widgets":[
+                        {
+                           "name":"notifs",
+                           "type":"widget_notifications",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Notification",
+                                 "en":"Notifs"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"context",
+                                 "fr":"context"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ]
+      },
+      "cancelled":{
+         "labels":{
+            "en":"Process cancelled",
+            "fr":"Process annulé"
+         },
+         "bootstrap_class":"secondary",
+         "fork":"cancellation",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+                        {
+                           "type":"widget_taskDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Détail tâches",
+                                 "en":"Tasks details"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"process dyn",
+                                 "fr":"process dynamique"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            
+         ],
+         "transitions":[
+            
+         ]
+      }
+   }
+}

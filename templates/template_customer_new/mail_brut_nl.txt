@@ -1,0 +1,7 @@
+Beste {firstName} {lastName},
+
+We zijn verheugd je te verwelkomen op ons CRM-platform. Met dit systeem kun je efficiënt gegevens beheren, klantrelaties verbeteren en bedrijfsgroei stimuleren. We staan altijd voor je klaar om te helpen. Aarzel niet om contact op te nemen voor vragen of ondersteuning.
+
+Dank je wel dat je voor ons hebt gekozen. Welkom bij onze CRM-community. We kijken uit naar jouw succes.
+
+Met vriendelijke groet,

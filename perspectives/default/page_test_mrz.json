@@ -1,0 +1,126 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_banner",
+         "parameters":{
+            "background-color":"#20c997",
+            "color":"#eee",
+            "title":"Test MRZ %user_name"
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":6,
+               "widgets":[
+                  {
+                     "name":"a",
+                     "type":"widget_PimDetails",
+                     "parameters":{
+                        "embeded":true,
+                        "labels":{
+                           "fr":"Details",
+                           "en":"Details"
+                        },
+                        "mode":"edit",
+                        "entity":"identity_document",
+                        "characteristics":[
+                           
+                        ]
+                     }
+                  }
+               ]
+            },
+            {
+               "width":6,
+               "widgets":[
+                  {
+                     "type":"widget_MRZreader",
+                     "parameters":{
+                        "labels":{
+                           "fr":"titre en fr",
+                           "en":"title in english"
+                        },
+                        "file":{
+                           "formats":[
+                              "image\/png",
+                              "image\/jpeg",
+                              "image\/tiff"
+                           ],
+                           "labels":{
+                              "fr":"Choisissez un document (CNI ou Passeport)",
+                              "en":"Select ID document (ID or Passeport)"
+                           }
+                        },
+                        "mapping":{
+                           "processed":{
+                              "documentCode":"documentType",
+                              "lastName":"lastName",
+                              "firstName":"firstName",
+                              "birthDate":"birthdate",
+                              "documentNumber":"documentNumber",
+                              "expirationDate":"expirationDate",
+                              "nationality":"nationality",
+                              "sex":"sex"
+                           },
+                           "raw":{
+                              "image":"",
+                              "mrz":"",
+                              "json":""
+                           }
+                        },
+                        "tabs":{
+                           "image":{
+							   "icon":"bi bi-image",
+                              "labels":{
+                                 "fr":"image",
+                                 "en":"picture"
+                              }
+                           },
+                           "mrz":{
+                              "labels":{
+							   "icon":"bi bi-image",
+                                 "fr":"bande MRZ",
+                                 "en":"MRZ zone"
+                              }
+                           },
+                           "json":{
+                              "labels":{
+							   "icon":"bi bi-image",
+                                 "fr":"json brut",
+                                 "en":"raw json"
+                              }
+                           }
+                        },
+                        "errors":{
+                           "labels":{
+                              "fr":"Erreur dans le traitement de l'image. V\u00e9rifiez le d\u00e9tail.",
+                              "en":"Errors during picture analysis. Please check logs."
+                           }
+                        }
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

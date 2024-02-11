@@ -1,0 +1,208 @@
+{
+   "name":"userGroup",
+   "labels":{
+      "en":"systen user",
+      "fr":"utilisateur"
+   },
+   "icon":"bi bi-people-fill",
+   "parents":["brand"],
+   "unicity":["name"],
+   "db_table":"userGroups",
+   "default_page":"page_userGroupProfile",
+   "default_process":"process_newUserGroup",
+   "lineage_tree":{"title":"<strong>user Group</strong> %name", "characteristics":["state","firstName","lastName"]},
+   "characteristics":[
+   {
+         "name":"userGroupName",
+         "type":"text",
+         "data_id":"userGroupName",
+         "labels":{
+            "en":"User Group Name",
+            "fr":"Nom UG"
+         },
+         "mandatory":true,
+         "unicity":true,
+         "rights":{
+            "read":[
+               "user"
+            ],
+            "edit":[
+			"user",
+               "admin"
+            ]
+         }
+      },
+	  {
+         "name":"state",
+         "type":"monoselect",
+         "data_id":"state",
+         "icon":"bi bi-translate",
+         "labels":{
+            "en":"State",
+            "fr":"Etat"
+         },
+         "value_type":"dynamic",
+         "value":{
+            "function_name":"getLifeCycleList",
+            "function_param":"user_group"
+         },
+         "mandatory":true,
+         "disabled":false,
+         "listing":{
+            "filter":{
+               "indexed":true,
+               "type":"radio"
+            },
+            "type":"state"
+         },
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               "super_admin"
+            ]
+         }
+      },
+	  {
+         "name":"labels",
+         "type":"multiInput",
+         "data_id":"labels",
+         "labels":{
+            "en":"UG name displayed",
+            "fr":"Nom affichee des UG"
+         },
+         "inputs":[
+            {
+               "name":"fr",
+               "data_id":"fr",
+               "icon":"",
+               "labels":{
+                  "en":"French",
+                  "fr":"Francais"
+               }
+            },
+            {
+               "name":"en",
+               "data_id":"en",
+               "icon":"",
+               "labels":{
+                  "en":"English",
+                  "fr":"Anglais"
+               }
+            }
+         ],
+         "mandatory":false,		 
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               "user",
+               "super_admin"
+            ]
+         }
+      }
+   
+   ],
+   "lifecycle":{
+      "draft":{
+         "labels":{
+            "en":"Draft",
+            "fr":"Brouillon"
+         },
+         "bootstrap_class":"purple",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"activate",
+                  "fr":"activer"
+               },
+               "process":"activate",
+               "target":"active"
+            }
+         ],
+         "access":{
+            "auth":false,
+            "labels":{
+               "fr":"pending welcome message",
+               "en":"message pending"
+            }
+         }
+      },
+      "active":{
+         "labels":{
+            "en":"Active",
+            "fr":"Actif"
+         },
+         "bootstrap_class":"success",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"Lock",
+                  "fr":"Bloquer"
+               },
+               "process":"lock",
+               "target":"locked"
+            },
+            {
+               "labels":{
+                  "en":"Terminate",
+                  "fr":"Finir"
+               },
+               "process":"unlock",
+               "target":"terminated"
+            }
+         ],
+         "access":{
+            "auth":true,
+            "labels":{
+               "fr":"active welcome message",
+               "en":"message actif"
+            }
+         }
+      },
+      "locked":{
+         "labels":{
+            "en":"Locked",
+            "fr":"Verrouillé"
+         },
+         "bootstrap_class":"warning",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"Unlock",
+                  "fr":"Déverrouiller"
+               },
+               "process":"unlock",
+               "target":"active"
+            }
+         ],
+         "access":{
+            "auth":false,
+            "labels":{
+               "fr":"locked welcome message",
+               "en":"message verouillé"
+            }
+         }
+      },
+      "terminated":{
+         "labels":{
+            "en":"terminated",
+            "fr":"Supprimé"
+         },
+         "bootstrap_class":"danger",
+         "transitions":[
+            
+         ],
+         "access":{
+            "auth":false,
+            "labels":{
+               "fr":"terminated welcome message",
+               "en":"message termine"
+            }
+         }
+      }
+   }
+}

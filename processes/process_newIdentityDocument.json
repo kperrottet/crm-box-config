@@ -1,0 +1,401 @@
+{
+   "labels":{
+      "en":"Create new ID",
+      "fr":"Créer Nouveau doc ID"
+   },
+   "type":{
+      "code":"CRID",
+      "description":{
+         "labels":{
+            "fr":"créé un nouveau document d'identité",
+            "en":"Creates a new ID document"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "available_in":[
+      "page_customerDetails"
+   ],
+   "context":{
+      "function":"getParty",
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         "user"
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            "user"
+         ],
+         "edit":[
+            "user",
+            "admin"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-postcard",
+         "color":"#FFF",
+         "bgcolor":"#520dc2"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "new":{
+         "labels":{
+            "en":"Capure and Scan",
+            "fr":"Dérail et scan"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Details",
+                                 "en":"Details"
+                              },
+                              "mode":"edit",
+                              "entity":"identity_document",
+                              "characteristics":[
+                                 
+                              ]
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"get",
+                              "format":"json",
+                              "comment":"\/\/comment 2nd comment",
+                              "theme":"code_dark",
+                              "labels":{
+                                 "en":"get",
+                                 "fr":"get"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"post",
+                              "format":"json",
+                              "comment":"\/\/comment 2nd comment",
+                              "theme":"code_dark",
+                              "labels":{
+                                 "en":"post",
+                                 "fr":"post"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                     "type":"widget_MRZreader",
+                     "parameters":{
+                        "labels":{
+                           "fr":"titre en fr",
+                           "en":"title in english"
+                        },
+                        "file":{
+                           "formats":[
+                              "image\/png",
+                              "image\/jpeg",
+                              "image\/tiff"
+                           ],
+                           "labels":{
+                              "fr":"Choisissez un document (CNI ou Passeport)",
+                              "en":"Select ID document (ID or Passeport)"
+                           }
+                        },
+                        "mapping":{
+                           "processed":{
+                              "documentCode":"documentType",
+                              "lastName":"lastName",
+                              "firstName":"firstName",
+                              "birthDate":"birthdate",
+                              "documentNumber":"documentNumber",
+                              "expirationDate":"expirationDate",
+                              "nationality":"nationality",
+                              "sex":"sex"
+                           },
+                           "raw":{
+                              "image":"id_picture",
+                              "mrz":{"input":"id_mrz2","lines":["line_0","1","2"]},
+                              "json":"id_json"
+                           }
+                        },
+                        "tabs":{
+                           "image":{
+							   "icon":"bi bi-image",
+                              "labels":{
+                                 "fr":"image",
+                                 "en":"picture"
+                              }
+                           },
+                           "mrz":{
+                              "labels":{
+							   "icon":"bi bi-image",
+                                 "fr":"bande MRZ",
+                                 "en":"MRZ zone"
+                              }
+                           },
+                           "json":{
+                              "labels":{
+							   "icon":"bi bi-image",
+                                 "fr":"json brut",
+                                 "en":"raw json"
+                              }
+                           }
+                        },
+                        "errors":{
+                           "labels":{
+                              "fr":"Erreur dans le traitement de l'image. V\u00e9rifiez le d\u00e9tail.",
+                              "en":"Errors during picture analysis. Please check logs."
+                           }
+                        }
+                     }
+                  }
+                     ,
+					 {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"process dyn",
+                                 "fr":"process dynamique"
+                              }
+                           }
+                        }]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"save",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"text",
+               "parameters":{
+                  "labels":{
+                     "en":"|",
+                     "fr":"|"
+                  }
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"submit",
+               "parameters":{
+                  "class":"btn-success"
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            {
+               "target":"saved",
+               "labels":{
+                  "en":"create",
+                  "fr":"Sauvegarder ID"
+               },
+               "process":"activate"
+            }
+         ]
+      },
+      "saved":{
+         "labels":{
+            "en":"Saved",
+            "fr":"Sauvegardé"
+         },
+         "tasks":[
+			{
+               "name":"create file",
+               "config_file":"task_createFile.json"
+            }
+         ],
+         "tasks_old":[
+			{
+               "name":"create ID Document",
+               "config_file":"task_createID.json"
+            },
+            {
+               "name":"save ID Scan",
+               "config_file":"task_saveIdScan.json"
+            }
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Details",
+                                 "en":"Details"
+                              },
+                              "mode":"read",
+                              "entity":"identity_document",
+                              "characteristics":[
+                                 
+                              ]
+                           }
+                        },
+						{
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "format":"json",
+                              "comment":"\/\/comment 2nd comment",
+                              "theme":"code_dark",
+                              "labels":{
+                                 "en":"Process",
+                                 "fr":"Process"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"post",
+                              "format":"json",
+                              "comment":"\/\/comment 2nd comment",
+                              "theme":"code_dark",
+                              "labels":{
+                                 "en":"post",
+                                 "fr":"post"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ]
+      }
+   }
+}

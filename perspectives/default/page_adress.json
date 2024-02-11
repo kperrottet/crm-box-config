@@ -1,0 +1,140 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":true
+   },
+   "context":{
+      "function":"getParty",
+      "entity":"adress"
+   },
+   "validationOnLoading":true,
+   "confirmUnload":false,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_alert",
+         "parameters":{
+            "labels":{
+               "fr":"v1 page adresse",
+               "en":"v1 of page adress"
+            },
+            "type":"warning",
+            "dismissable":true
+         }
+      },
+      {
+         "type":"widgetPageTitle",
+         "parameters":{
+            "type":"title",
+            "icon":{
+               "value":"bi bi-person",
+               "color":"#fff",
+               "background":"#198754"
+            },
+            "string":"Adress : <b>%label %country</b> <sup style=\"text-transform:uppercase;\">%uniqid</sup>",
+            "button":[
+               {
+                  "type":"button_lifeCycle",
+                  "parameters":{
+                     "entity":"customer"
+                  },
+                  "rights":{
+                     "read":[
+                        
+                     ]
+                  }
+               },
+               {
+                  "type":"refresh",
+                  "parameters":[
+                     
+                  ],
+                  "rights":{
+                     "read":[
+                        "user",
+                        "admin"
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":4,
+               "widgets":[
+                  {
+                     "name":"a",
+                     "type":"widget_PimDetails",
+                     "parameters":{
+                        "labels":{
+                           "fr":"Identité",
+                           "en":"Identity"
+                        },
+                        "entity":"adress",
+                        "embeded":true,
+                        "characteristics":[
+                           
+                        ]
+                     }
+                  }
+               ]
+            },
+            {
+               "width":5,
+               "widgets":[
+                  {
+                     "name":"a",
+                     "type":"widget_map",
+                     "parameters":{
+                        "labels":{
+                           "fr":"Identité",
+                           "en":"Identity"
+                        },
+                        "entity":"adress",
+                        "embeded":true
+                     }
+                  },
+				  
+                              
+                              {
+                                 "name":"abb",
+                                 "type":"widget_tree",
+                                 "parameters":{"entity":[],"root":true}
+                              }
+               ]
+            },
+            {
+               "width":3,
+               "widgets":[
+                  {
+                     "type":"lifeCycleSVG",
+                     "parameters":{
+                        "entity":"adress",
+                        "mode":"B"
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

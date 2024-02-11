@@ -1,0 +1,158 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":false
+   },
+   "validationOnLoading":false,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_banner",
+         "parameters":{
+            "background-color":"#20c997",
+            "color":"#eee",
+            "title":"Document list %user_name"
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":12,
+               "widgets":[
+                  {
+                     "type":"widget_list",
+                     "parameters":{
+						 "embeded":true,
+                        "filters":{
+                           "searchbar":true,
+                           "filters":true
+                        },
+                        "format":{
+                           "title":{
+                              "labels":{
+                                 "fr":"Liste process",
+                                 "en":"Processes"
+                              }
+                           },
+                           "dateTime":{
+                              "timeZone":"Asia/Bangkok",
+                              "dateTimeFormat":"d-m-Y H:i:s",
+                              "showTimeZone":true
+                           },
+                           "column_heads":{
+                              "uniqid":{
+                                 "labels":{
+                                    "fr":"uniqid",
+                                    "en":"uniqid"
+                                 }
+                              },
+                              "date":{
+                                 "date":{
+                                    "fr":"creation",
+                                    "en":"date"
+                                 },
+                                 "type":"date-time"
+                              },
+                              "state":{
+                                 "labels":{
+                                    "fr":"\u00e9tat",
+                                    "en":"state"
+                                 },
+                                 "filter":{
+                                    "indexed":true,
+                                    "type":"radio"
+                                 },
+                                 "type":"state"
+                              },
+                              "type":{
+                                 "labels":{
+                                    "fr":"Type",
+                                    "en":"type"
+                                 },
+                                 "filter":{
+                                    "indexed":true,
+                                    "type":"radio"
+                                 }
+                              },
+                              "link":{
+                                 "labels":{
+                                    "fr":"Lien",
+                                    "en":"Link"
+                                 },
+                                 "type":"intralink",
+                                 "target":""
+                              }
+                           }
+                        },
+                        "exports":[
+                           {
+                              "name":"HTML",
+                              "separator":";",
+                              "headers":true,
+                              "format":"html",
+                              "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"HTML (no header)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"html",
+                              "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                           },
+                           "separator",
+                           {
+                              "name":"CSV",
+                              "separator":";",
+                              "headers":true,
+                              "format":"csv",
+                              "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"CSV (no headers)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"csv",
+                              "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                           },
+                           "separator",
+                           {
+                              "name":"JSON",
+                              "separator":";",
+                              "headers":true,
+                              "format":"csv",
+                              "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"JSON (no header)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"csv",
+                              "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                           }
+                        ],
+                        "sql":"SELECT sys_files.type as type, sys_files.date as date, sys_files.state as state, sys_files.uniqid as uniqid,  concat(\"process_manager.php?process[id][value]=\",sys_files.uniqid) as link FROM `sys_files` order by date desc"
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

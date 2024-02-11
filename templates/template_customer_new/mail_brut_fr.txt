@@ -1,0 +1,7 @@
+Cher/Chère {firstName} {lastName},
+
+Nous sommes ravis de vous accueillir sur notre plateforme CRM. Grâce à ce système, vous pouvez gérer efficacement vos données, améliorer vos relations avec les clients et stimuler la croissance de votre entreprise. Nous sommes à votre disposition pour vous soutenir à chaque étape. N'hésitez pas à nous contacter en cas de questions ou de besoin d'assistance.
+
+Merci de nous avoir choisis. Bienvenue dans notre communauté CRM. Nous sommes impatients de contribuer à votre réussite.
+
+Cordialement

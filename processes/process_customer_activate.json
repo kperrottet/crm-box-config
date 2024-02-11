@@ -1,0 +1,218 @@
+{
+   "labels":{
+      "en":"Activate customer",
+      "fr":"Activer client"
+   },
+   "type":{
+      "code":"CUST_ACT",
+      "description":{
+         "labels":{
+            "fr":"Active un client",
+            "en":"Activate customer"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false, 
+   "category":"customer_mgt",
+   "restricted_to":{
+	   "customer":["prospect"]
+	},
+   "available_in":[
+      "page_customerDetails"
+   ],
+   "context":{
+      "function":"getParty",
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "cancellation":{
+      "state":"cancelled",
+      "warning":{
+         "title":{
+            "labels":{
+               "fr":"titre modal annuller",
+               "en":"Ttitle modal"
+            }
+         },
+         "message":{
+            "labels":{
+               "fr":"Voulez vous annuler ce process ?",
+               "en":"Ttitle modal message"
+            }
+         },
+         "button_close":{
+            "labels":{
+               "fr":"Fermer",
+               "en":"Close"
+            }
+         },
+         "button_ok":{
+            "labels":{
+               "fr":"Oui",
+               "en":"OK"
+            }
+         }
+      }
+   },
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         "user"
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            "user"
+         ],
+         "edit":[
+            "user",
+            "admin"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-person-up",
+         "color":"rgb(245,246,247)",
+         "bgcolor":"green"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "done":{
+         "labels":{
+            "en":"Customer activation",
+            "fr":"Activation client"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            {
+               "name":"set_entity",
+               "config_file":"task_customer_update.json"
+            }
+         ],
+         "initial_values":{
+            "state":"active",
+            "exemple":true,
+            "other":"kevin",
+            "object":{
+               "function":"now"
+            }
+         },
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_taskDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Détail tâches",
+                                 "en":"Tasks details"
+                              }
+                           }
+                        },
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":9,
+                     "widgets":[
+                        {
+                           "type":"widget_alert",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Client activé",
+                                 "en":"Customer activtaed"
+                              },
+                              "type":"success",
+                              "dismissable":true
+                           }
+                        },
+                        {
+                           "type":"widget_createdEntity",
+                           "parameters":{
+                              "entity":[
+                                 
+                              ]
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            
+         ],
+         "confirmUnload":false
+      }
+   }
+}

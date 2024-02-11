@@ -1,0 +1,98 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration felx"
+   },
+   "border":0,
+   "context":"user",
+   "title":
+   {
+	   "string":"Utilisateur : %username",
+	   "variables":["%username"]
+   },
+   "lifeCycleBtn":true,
+   "content":[
+      {
+         "widgets":[
+			{"type":"header"},
+            {
+               "type":"tabs",
+			   "content":[{"name":"tab1","labels":{"fr":"onglet 1","en":"Tab1"},"content":"a voire 1 "},{"name":"tab2","labels":{"fr":"onglet 2","en":"Tab2"},"content":"a voir2 "}],
+               "parameters":
+                  {
+                     "name":"a",
+					 "height":"full",
+                     "entity":"user"
+                  }
+               
+            }
+         ]
+      },
+      {
+         "columns":[
+            {
+               "width":"12",
+               "content":[
+                  {
+                     "widgets":[
+                        {
+                           "type":"tabs",
+                           "parameters":
+                              {
+                                 "name":"b",
+								 "height":"full",
+                                 "entity":"user"
+                              }
+                           
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "columns":[
+            {
+               "width":"8",
+               "content":[
+                  {
+                     "widgets":[
+                        {
+                           "type":"tabs",
+						   "content":[{"name":"tab1","labels":{"fr":"onglet 1","en":"Tab1"},"content":"a voir1 "},{"name":"tab2","labels":{"fr":"onglet 2","en":"Tab2"},"content":"a voir2 "}],
+						   "parameters":
+							  {
+								 "name":"c",
+								 "height":"full",
+								 "entity":"user"
+							  }
+                           
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "width":"4",
+               "content":[
+                  {
+                     "widgets":[
+                        {
+                           "type":"raw",
+                           "parameters":
+                              {
+                                 "name":"d",
+								 "entity":"user"
+                              }
+                           
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

@@ -1,0 +1,34 @@
+{
+   "name":"welcome letter new user",
+   "folder":"template_user_new",
+   "type":"email",
+   "from":{
+      "email":"administrator@crm-box.cloud",
+      "name":"Administrator"
+   },
+   "versions":{
+      "fr":{
+         "file_html":"mail_fr.htm",
+         "file_alternate":"mail_brut_fr.txt",
+         "subject":"CRM-BOX : Bienvenue {firstName}",
+         "reply":{
+            "email":"retour_fr@crm-box.cloud",
+            "name":"Retour"
+         }
+      },
+      "en":{
+         "file_html":"mail_en.htm",
+         "file_alternate":"mail_brut_en.txt",
+         "subject":"CRM-BOX : Welcome {firstName}",
+         "reply":{
+            "email":"feedback_en@crm-box.cloud",
+            "name":"Feedback"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         
+      ]
+   }
+}

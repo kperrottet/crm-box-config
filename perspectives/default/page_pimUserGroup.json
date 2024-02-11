@@ -1,0 +1,161 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{
+      "hidden":false,
+      "actions":true,
+      "lineage":false
+   },
+   "context":{
+      "entity":"user_group"
+   },
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widgetPageTitle",
+         "parameters":{
+            "type":"title",
+            "icon":{
+               "value":"bi bi-people-fill",
+               "color":"#fff",
+               "background":"#801f4f"
+            },
+            "string":"PIM Utilisateur",
+            "button":[
+               {
+                  "type":"refresh",
+                  "parameters":[
+                     
+                  ],
+                  "rights":{
+                     "read":[
+                        "user",
+                        "admin"
+                     ]
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+            {
+               "width":12,
+               "widgets":[
+                  {
+                     "type":"tabs",
+                     "content":[
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"PIM caracteristiques",
+                              "en":"PIM caracteristiques"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"acc",
+                                 "type":"widgetcharacteristicsAccordion",
+                                 "parameters":{
+                                    "entity":"user_group"
+                                 },
+                                 "rights":{
+                                    "read":[
+                                       
+                                    ],
+                                    "edit":[
+                                       
+                                    ]
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab3",
+                           "labels":{
+                              "fr":"RAW",
+                              "en":"RAW"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"abb",
+                                 "type":"raw",
+                                 "parameters":{
+                                    "source":"file",
+                                    "file_url":"config/pim/user_group.json",
+                                    "format":"json",
+                                    "comment":"\/\/config file",
+                                    "theme":"code_light",
+                                    "labels":{
+                                       "en":"config file",
+                                       "fr":"fichier de configuration"
+                                    }
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "name":"tab2",
+                           "labels":{
+                              "fr":"Cycle de vie",
+                              "en":"Lifecycle"
+                           },
+                           "widgets":[
+                              {
+                                 "name":"user_details",
+                                 "type":"layout",
+                                 "columns":[
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "type":"widget_LifeCycleAccordion",
+                                             "parameters":{
+                                                "entity":"user_group"
+                                             }
+                                          }
+                                       ]
+                                    },
+                                    {
+                                       "width":6,
+                                       "widgets":[
+                                          {
+                                             "type":"lifeCycleSVG",
+                                             "parameters":{
+                                                "entity":"user_group",
+                                                "mode":"A"
+                                             }
+                                          }
+                                       ]
+                                    }
+                                 ]
+                              }
+                           ]
+                        }
+                     ],
+                     "parameters":{
+                        "name":"a",
+                        "height":"full",
+                        "entity":"user_group"
+                     }
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

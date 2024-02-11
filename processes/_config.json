@@ -1,0 +1,48 @@
+{
+   "categories":{
+      "x":{
+         "labels":{
+            "en":"Category X",
+            "fr":"Catégorie X"
+         },
+         "icon":"bi bi-airplane",
+         "color":{
+            "background":"#493473",
+            "text":"#FFFFFF"
+         }
+      },
+      "customer_mgt":{
+         "labels":{
+            "en":"Customer Management",
+            "fr":"Gestion client"
+         },
+         "icon":"bi bi-person-gear",
+         "color":{
+            "background":"#73344e",
+            "text":"#FFFFFF"
+         }
+      },
+      "cp_mgt":{
+         "labels":{
+            "en":"Contact Person Management",
+            "fr":"Gestion Personne de contact"
+         },
+         "icon":"bi bi-person-rolodex",
+         "color":{
+            "background":"#3a3473",
+            "text":"#FFFFFF"
+         }
+      },
+      "adress_mgt":{
+         "labels":{
+            "en":"Adress Management",
+            "fr":"Gestion adresses"
+         },
+         "icon":"bi bi-geo-alt",
+         "color":{
+            "background":"#34734c",
+            "text":"#FFFFFF"
+         }
+      }
+   }
+}

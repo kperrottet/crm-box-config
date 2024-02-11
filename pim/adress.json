@@ -1,0 +1,247 @@
+{
+   "name":"adress",
+   "labels":{
+      "en":"Adress",
+      "fr":"Adresse"
+   },
+   "icon":"bi bi-geo-alt",
+   "parents":["customer"
+      
+   ],
+   "unicity":[
+      
+   ],
+   "db_table":"adresses",
+   "default_page":"page_adress",
+   "default_process":"process_adress_new",
+   "lineage_tree":{
+      "title":"%streetNumber %streetName %zipCode %city",
+      "characteristics":[
+         "state"
+      ]
+   },
+   "characteristics":[
+      {
+         "name":"streetNumber",
+         "type":"text",
+         "data_id":"streetNumber",
+         "mandatory":true,
+         "labels":{
+            "en":"street Number",
+            "fr":"Numéro de rue"
+         },
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         }
+      },
+      {
+         "name":"streetName",
+         "type":"text",
+         "data_id":"streetName",
+         "mandatory":true,
+         "labels":{
+            "en":"Street Name",
+            "fr":"Rue"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         }
+      },
+      {
+         "name":"zipCode",
+         "type":"text",
+         "data_id":"zipCode",
+         "mandatory":true,
+         "labels":{
+            "en":"Zip Code",
+            "fr":"Code Postal"
+         },
+         "disabled":false,
+         "validation":{
+            "pattern":"[0-9]{4,5}",
+            "tip":{
+               "labels":{
+                  "en":"4 or 5 digits",
+                  "fr":"4 ou 5 chiffres"
+               }
+            }
+         },
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         }
+      },
+      {
+         "name":"city",
+         "type":"text",
+         "data_id":"city",
+         "mandatory":true,
+         "labels":{
+            "en":"City",
+            "fr":"Ville"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         }
+      },
+      {
+         "name":"country",
+         "type":"text",
+         "data_id":"country",
+         "mandatory":true,
+         "labels":{
+            "en":"Country",
+            "fr":"Pays"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               
+            ]
+         }
+      },
+      {
+         "name":"label",
+         "type":"text",
+         "data_id":"label",
+         "mandatory":true,
+         "labels":{
+            "en":"label",
+            "fr":"Étiquette"
+         },
+         "disabled":false,
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":["super_admin"
+               
+            ]
+         }
+      },
+      {
+         "name":"coordinates",
+         "type":"multiInput",
+         "mandatory":true,
+         "labels":{
+            "en":"Geo",
+            "fr":"Geo"
+         },
+         "disabled":false,
+		 "inputs":[
+            {
+               "name":"x",
+               "data_id":"x",
+               "labels":{
+                  "en":"x",
+                  "fr":"x"
+               }
+            },			
+            {
+               "name":"y",
+               "data_id":"y"
+            }
+],
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":["super_admin"
+               
+            ]
+         }
+      },
+      {
+         "name":"state",
+         "type":"monoselect",
+         "data_id":"state",
+         "icon":"bi bi-translate",
+         "labels":{
+            "en":"State",
+            "fr":"Etat"
+         },
+         "value_type":"dynamic",
+         "value":{
+            "function_name":"getLifeCycleList",
+            "function_param":"adress"
+         },
+         "mandatory":true,
+         "disabled":false,
+         "listing":{
+            "filter":{
+               "indexed":true,
+               "type":"radio"
+            },
+            "type":"state"
+         },
+         "rights":{
+            "read":[
+               
+            ],
+            "edit":[
+               "super_admin"
+            ]
+         }
+      }
+   ],
+   "lifecycle":{
+      "active":{
+         "labels":{
+            "en":"Active",
+            "fr":"Actif"
+         },
+         "bootstrap_class":"success",
+         "transitions":[
+            {
+               "labels":{
+                  "en":"terminate",
+                  "fr":"finir"
+               },
+               "process":"unlock",
+               "target":"terminated"
+            }
+         ]
+      },
+      "terminated":{
+         "labels":{
+            "en":"terminated",
+            "fr":"Supprimé"
+         },
+         "bootstrap_class":"danger",
+         "transitions":[
+            
+         ],
+         "access":{
+            "auth":false,
+            "labels":{
+               "fr":"terminated welcome message",
+               "en":"message terminé"
+            }
+         }
+      }
+   }
+}

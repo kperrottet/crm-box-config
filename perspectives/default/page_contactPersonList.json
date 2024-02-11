@@ -1,0 +1,118 @@
+{
+   "name":"template",
+   "labels":{
+      "en":"template demonstrator",
+      "fr":"demonstration flex"
+   },
+   "border":false,
+   "context_menu":{"hidden":false, "actions":true, "lineage":false},
+   "validationOnLoading":true,
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "widgets":[
+      {
+         "type":"widget_banner",
+         "parameters":{
+            "background-color":"#20c997",
+            "color":"#eee",
+            "title":"Welcome %user_name"
+         }
+      },
+      {
+         "name":"user_details",
+         "type":"layout",
+         "columns":[
+			{
+               "width":12,
+               "widgets":[
+			   
+			   {
+                     "type":"widget_entityList",
+                     "parameters":{
+                        "format":{
+                           "title":{
+                              "labels":{
+                                 "fr":"Liste \"Personnes de contact\"",
+                                 "en":"Contact Person list"
+                              }
+                           },
+                           "dateTime":{
+                              "timeZone":"Asia\/Bangkok",
+                              "dateTimeFormat":"d-m-Y H:i:s",
+                              "showTimeZone":true
+                           },
+                           "embeded":true
+                        },
+                        "entity":"contactPerson",
+                        "characteristics":[
+                           "uniqid",
+                           "firstName",
+                           "lastName",
+                           "state",
+                           "language"
+                        ],
+                        "exports":[
+                           {
+                              "name":"HTML",
+                              "separator":";",
+                              "headers":true,
+                              "format":"html",
+                              "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"HTML (no header)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"html",
+                              "filename":"HTML_%title%_%YYYY% %MM% %DD%"
+                           },
+                           "separator",
+                           {
+                              "name":"CSV",
+                              "separator":";",
+                              "headers":true,
+                              "format":"csv",
+                              "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"CSV (no headers)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"csv",
+                              "filename":"CSV_%title%_%YYYY% %MM% %DD%"
+                           },
+                           "separator",
+                           {
+                              "name":"JSON",
+                              "separator":";",
+                              "headers":true,
+                              "format":"csv",
+                              "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                           },
+                           {
+                              "name":"JSON (no header)",
+                              "separator":";",
+                              "headers":false,
+                              "format":"csv",
+                              "filename":"JSON_%title%_%YYYY% %MM% %DD%"
+                           }
+                        ],
+                        "filters":{
+                           "searchbar":true,
+                           "filters":true
+                        }
+                     }
+                  }
+				  ]
+			}
+         ]
+      }
+   ]
+}

@@ -1,0 +1,205 @@
+{
+   "id":"perspective_a",
+   "icon":"bi bi-basket",
+   "labels":{
+      "en":"Front office user",
+      "fr":"Utilisateur front office"
+   },
+   "description":{
+      "labels":{
+         "en":"perspective dedicated for sales",
+         "fr":"perspective pour les vendeurs"
+      }
+   },
+   "title":"CRM - v Agate",
+   "name":"demo perspective default",
+   "frame":{
+      "parameters":{
+         "backgroung-image":"background_logged.svg",
+		 "opacity":"0.3"
+      }
+   },
+   "home":{
+      "offcanvas":{
+         "parameters":{
+            "backgroung-image":"galaxy.jpg",
+            "opacity":"0.3"
+         },
+         "widgets":[
+            
+         ]
+      },
+      "top":{
+         "search":{
+            "labels":{
+               "fr":"personne de contact...",
+               "en":"contact pers..."
+            },
+			"widget_per_line":4,
+			"icon":true,
+            "entities":[
+               {
+                  "filename":"contactPerson",
+                  "name":"contactPerson",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state"
+                  ]
+               },
+               {
+                  "filename":"customer",
+                  "name":"customer",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state",
+                     "language"
+                  ]
+               },
+               {
+                  "filename":"user",
+                  "name":"user",
+                  "characteristics":[
+                     "uniqid",
+                     "firstName",
+                     "lastName",
+                     "state",
+                     "language"
+                  ]
+               },
+               {
+                  "filename":"adress",
+                  "name":"adress",
+                  "characteristics":[
+                     "uniqid",
+                     "streetNumber",
+                     "streetName",
+                     "zipCode",
+                     "city",
+                     "country",
+                     "state"
+                  ]
+               }
+            ],
+            "dateTime":{
+               "timeZone":"Asia\/Bangkok",
+               "dateTimeFormat":"d-m-Y H:i:s",
+               "showTimeZone":true
+            }
+         },
+		 "links":[
+            {
+               "page":"process_manager",
+               "data":"process_customer_new",
+               "group":"button",
+               "target":"iframe",
+               "labels":{
+                  "en":"Create customer",
+                  "fr":"Créer client"
+               },
+               "icon":{
+                  "icon":"bi bi-person-plus",
+                  "class":"btn-success"
+               }
+            }
+         ],
+         "administration":[
+            {
+               "page":"view",
+               "data":"page_usersList",
+               "labels":{
+                  "en":"<i class=\"bi bi-person-circle\"></i> %username",
+                  "fr":"<i class=\"bi bi-person-circle\"></i> %username"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"divider"
+            },
+            {
+               "page":"view",
+               "data":"page_pimCustomer",
+               "labels":{
+                  "en":"Customer format",
+                  "fr":"Modèle Client"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"view",
+               "data":"page_pimContactPerson",
+               "labels":{
+                  "en":"Contact Person format",
+                  "fr":"Modèle Personne de contact"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"view",
+               "data":"page_pimUser",
+               "labels":{
+                  "en":"User format",
+                  "fr":"Modèle Utilisateur"
+               },
+               "target":"iframe"
+            },
+            {
+               "page":"view",
+               "data":"page_pimUserGroup",
+               "labels":{
+                  "en":"UG format",
+                  "fr":"Modèle UG"
+               },
+               "target":"iframe"
+            }
+         ]
+      },
+      "homepage":{
+         "data":"page_dashboard"
+      }
+   },
+   "disconnexion":{
+      "button":{
+         "labels":{
+            "en":"Exit",
+            "fr":"Exit fr"
+         }
+      },
+      "title":{
+         "labels":{
+            "en":"Disconnect",
+            "fr":"Déconnexion"
+         }
+      },
+      "message":{
+         "labels":{
+            "en":"You are going to disconnect from the CRM. Please confirm.",
+            "fr":"Vous allez vous déconnecter du CRM. Veuillez confirmer."
+         }
+      },
+      "button_stay":{
+         "labels":{
+            "en":"Stay",
+            "fr":"Rester"
+         }
+      },
+      "button_out":{
+         "labels":{
+            "en":"Disconnect",
+            "fr":"Quitter"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "buser",
+         "badmin"
+      ]
+   }
+}
