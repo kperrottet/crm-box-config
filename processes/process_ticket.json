@@ -1,0 +1,692 @@
+{
+   "labels":{
+      "en":"Ticket",
+      "fr":"Ticket client"
+   },
+   "type":{
+      "code":"TKT",
+      "description":{
+         "labels":{
+            "fr":"ticket de client",
+            "en":"Customer ticket"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "category":"customer_mgt",
+   "available_in":[
+      "page_customersList"
+   ],
+   "context":{
+      "entity":"customer"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "cancellation":{
+      "state":"cancelled",
+      "warning":{
+         "title":{
+            "labels":{
+               "fr":"Annuler process",
+               "en":"Cancel process"
+            }
+         },
+         "message":{
+            "labels":{
+               "fr":"Voulez vous annuler ce process ?",
+               "en":"Do you want to cancel this process ?"
+            }
+         },
+         "button_close":{
+            "labels":{
+               "fr":"Fermer",
+               "en":"Close"
+            }
+         },
+         "button_ok":{
+            "labels":{
+               "fr":"Oui",
+               "en":"OK"
+            }
+         }
+      }
+   },
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Ticket créé",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Ticket created"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Ticket mis à jour",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Ticket updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         
+      ],
+      "edit":[
+         "super_admin",
+         "admin",
+         "user"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            
+         ],
+         "edit":[
+            "super_admin",
+            "admin",
+            "user"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-ticket",
+         "color":"rgb(245,246,247)",
+         "bgcolor":"#8d9e91"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "new":{
+         "labels":{
+            "en":"Ticket Details",
+            "fr":"Infos ticket"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+						{
+                           "type":"widget_lifecycleDiagram",
+                           "embeded":true,
+                           "parameters":{
+                              "process":"process_ticket",
+                              "mode":"A",
+							  "labels":{
+                                 "fr":"Cycle de vie",
+                                 "en":"Lifecycle"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+					 {
+                           "type":"widget_comments",
+                           "parameters":{
+                              "placeHolder":{
+                                 "labels":{
+                                    "fr":"Commentaire",
+                                    "en":"Comment"
+                                 }
+                              },
+                              "submit_button":{
+                                 "labels":{
+                                    "fr":"Enregistrer",
+                                    "en":"Save"
+                                 }
+                              },
+                              "Error_submission":{
+                                 "labels":{
+                                    "fr":"Probleme avec enregistrement du commentaire",
+                                    "en":"There was an error adding your comment."
+                                 }
+                              },
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Commtaires",
+                                 "en":"Comments"
+                              },
+                              "maxLength":350
+                           }
+                        },
+                        
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Informations principales",
+                                 "en":"Main details"
+                              },
+                              "embeded":true,
+                              "mode":"edit",
+                              "entity":"customer",
+                              "characteristics":[
+                                 "title",
+                                 "firstName",
+                                 "lastName"
+                              ]
+                           }
+                        },
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "labels":{
+                                 "fr":"Informations de communication",
+                                 "en":"Communication details"
+                              },
+                              "embeded":true,
+                              "mode":"edit",
+                              "entity":"customer",
+                              "characteristics":[
+                                 "language",
+                                 "email",
+                                 "phoneNumber"
+                              ]
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_filesAttached",
+                           "parameters":{
+                              "allow_upload":true,
+                              "embeded":true,
+                              "ug_file":[
+                                 "admin2",
+                                 "user"
+                              ],
+                              "accepted_format":[
+                                 "application/pdf",
+                                 "text/plain",
+                                 "image/png",
+                                 "image/jpeg"
+                              ],
+                              "labels":{
+                                 "fr":"Fichiers joints",
+                                 "en":"Attached files"
+                              },
+                              "display":"large"
+                           },
+                           "rights":{
+                              "read":[
+                                 
+                              ],
+                              "edit":[
+                                 "super_admin"
+                              ]
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"save",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"text",
+               "parameters":{
+                  "labels":{
+                     "en":"|",
+                     "fr":"|"
+                  }
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"submit",
+               "parameters":{
+                  "class":"btn-success"
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            {
+               "target":"open",
+               "labels":{
+                  "en":"open ticket",
+                  "fr":"ouvrir ticket"
+               },
+               "process":"activate"
+            }
+         ]
+      },
+      "open":{
+         "labels":{
+            "en":"Ticket Resolution",
+            "fr":"résolution ticket"
+         },
+         "bootstrap_class":"purple",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+						{
+                           "type":"widget_lifecycleDiagram",
+                           "embeded":true,
+                           "parameters":{
+                              "process":"process_ticket",
+                              "mode":"A",
+							  "labels":{
+                                 "fr":"Cycle de vie",
+                                 "en":"Lifecycle"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "type":"widget_comments",
+                           "parameters":{
+                              "placeHolder":{
+                                 "labels":{
+                                    "fr":"Commentaire",
+                                    "en":"Comment"
+                                 }
+                              },
+                              "submit_button":{
+                                 "labels":{
+                                    "fr":"Enregistrer",
+                                    "en":"Save"
+                                 }
+                              },
+                              "Error_submission":{
+                                 "labels":{
+                                    "fr":"Probleme avec enregistrement du commentaire",
+                                    "en":"There was an error adding your comment."
+                                 }
+                              },
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Commtaires",
+                                 "en":"Comments"
+                              },
+                              "maxLength":350
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_filesAttached",
+                           "parameters":{
+                              "allow_upload":true,
+                              "embeded":true,
+                              "ug_file":[
+                                 "super_admin",
+                                 "admin",
+                                 "user"
+                              ],
+                              "accepted_format":[
+                                 "application/pdf",
+                                 "text/plain",
+                                 "image/png",
+                                 "image/jpeg"
+                              ],
+                              "labels":{
+                                 "fr":"Fichiers joints",
+                                 "en":"Attached files"
+                              },
+                              "display":"large"
+                           },
+                           "rights":{
+                              "read":[
+                                 
+                              ],
+                              "edit":[
+                                 "super_admin"
+                              ]
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"save",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"text",
+               "parameters":{
+                  "labels":{
+                     "en":"|",
+                     "fr":"|"
+                  }
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"submit",
+               "parameters":{
+                  "class":"btn-success"
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            {
+               "target":"closed",
+               "labels":{
+                  "en":"Close ticket",
+                  "fr":"Fermer ticket"
+               },
+               "process":"activate"
+            },
+            {
+               "target":"new",
+               "labels":{
+                  "en":"create adress",
+                  "fr":"créer adresse 2"
+               },
+               "process":"activate"
+            }
+         ]
+      },
+      "closed":{
+         "labels":{
+            "en":"Solved",
+            "fr":"Résolu"
+         },
+         "tasks":[],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+						{
+                           "type":"widget_lifecycleDiagram",
+                           "embeded":true,
+                           "parameters":{
+                              "process":"process_ticket",
+                              "mode":"A",
+							  "labels":{
+                                 "fr":"Cycle de vie",
+                                 "en":"Lifecycle"
+                              }
+                           }
+                        }
+                     
+                        
+                     ]
+                  },
+                  
+                  {
+                     "width":6,
+                     "widgets":[
+					 
+                        {
+                           "type":"widget_comments",
+                           "parameters":{
+                              "placeHolder":{
+                                 "labels":{
+                                    "fr":"Commentaire",
+                                    "en":"Comment"
+                                 }
+                              },
+                              "submit_button":{
+                                 "labels":{
+                                    "fr":"Enregistrer",
+                                    "en":"Save"
+                                 }
+                              },
+                              "Error_submission":{
+                                 "labels":{
+                                    "fr":"Probleme avec enregistrement du commentaire",
+                                    "en":"There was an error adding your comment."
+                                 }
+                              },
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Commtaires",
+                                 "en":"Comments"
+                              },
+                              "maxLength":350
+                           }
+                        }
+                        
+                     ]
+                  },
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "name":"notifs",
+                           "type":"widget_notifications",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Notification",
+                                 "en":"Notifs"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"context",
+                                 "fr":"context"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ]
+      },
+      "cancelled":{
+         "labels":{
+            "en":"Process cancelled",
+            "fr":"Process annulé"
+         },
+         "bootstrap_class":"secondary",
+         "fork":"cancellation",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        },
+                        {
+                           "type":"widget_taskDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Détail tâches",
+                                 "en":"Tasks details"
+                              }
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"process dyn",
+                                 "fr":"process dynamique"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            
+         ],
+         "transitions":[
+            
+         ]
+      }
+   }
+}
