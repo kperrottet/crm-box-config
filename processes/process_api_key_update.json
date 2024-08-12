@@ -1,0 +1,421 @@
+{
+   "labels":{
+      "en":"Modify API key",
+      "fr":"Modifier clef API"
+   },
+   "type":{
+      "code":"APIK_MOD",
+      "description":{
+         "labels":{
+            "fr":"Modifie une clef API",
+            "en":"Modifies an API key"
+         }
+      }
+   },
+   "name":{
+      "pattern":"%type\/%date\/%increment",
+      "date_format":"Ym"
+   },
+   "border":false,
+   "available_in":[
+      "page_api_keyDetails"
+   ],
+   "context":{
+      "function":"getParty",
+      "entity":"api_key"
+   },
+   "validationOnLoading":true,
+   "return":"erase",
+   "communication":{
+      "create":{
+         "parameters":{
+            "type":"toast",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process API Key modification created",
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process API Key modification cree"
+         }
+      },
+      "update":{
+         "parameters":{
+            "type":"alert",
+            "class":"success",
+            "dismissable":true,
+            "duration":10000
+         },
+         "labels":{
+            "fr":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name mis a jour",
+            "en":"<i class=\"bi bi-info-circle m-2\"></i> Process %process_name updated"
+         }
+      }
+   },
+   "rights":{
+      "read":[
+         "user"
+      ],
+      "edit":[
+         "user",
+         "admin"
+      ]
+   },
+   "tasks":{
+      "parameters":{
+         "labels":{
+            "en":"Tasks list",
+            "fr":"Liste des tâches"
+         }
+      },
+      "rights":{
+         "read":[
+            "user"
+         ],
+         "edit":[
+            "user",
+            "admin"
+         ]
+      }
+   },
+   "breadCrumbs":{
+      "display":true,
+      "head":{
+         "icon":"bi bi-person-rolodex",
+         "color":"#FFF",
+         "bgcolor":"#520dc2"
+      },
+      "button":[
+         
+      ]
+   },
+   "lifecycle":{
+      "new":{
+         "labels":{
+            "en":"Details",
+            "fr":"Détails"
+         },
+         "bootstrap_class":"success",
+         "tasks":[
+            
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "type":"widget_taskDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Détail tâches",
+                                 "en":"Tasks details"
+                              }
+                           }
+                        },
+                        {
+                           "type":"widget_processInfo",
+                           "parameters":{
+                              "embeded":true
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":6,
+                     "widgets":[
+                        {
+                           "name":"a",
+                           "type":"widget_PimDetails",
+                           "parameters":{
+                              "embeded":true,
+                              "labels":{
+                                 "fr":"Details",
+                                 "en":"Details"
+                              },
+                              "mode":"edit",
+                              "entity":"api_key",
+                              "characteristics":[
+                                 
+                              ]
+                           }
+                        },
+                        {
+                           "type":"widget_filesAttached",
+                           "parameters":{
+                              "allow_upload":true,
+                              "embeded":true,
+                              "ug_file":[
+                                 "admin2",
+                                 "user"
+                              ],
+                              "accepted_format":[
+                                 "application/pdf",
+                                 "text/plain",
+                                 "image/png",
+                                 "image/jpeg"
+                              ],
+                              "labels":{
+                                 "fr":"Fichiers joints",
+                                 "en":"Attached files"
+                              },
+                              "display":"large"
+                           },
+                           "rights":{
+                              "read":[
+                                 
+                              ],
+                              "edit":[
+                                 "super_admin"
+                              ]
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":3,
+                     "widgets":[
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"process dyn",
+                                 "fr":"process dynamique"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"post",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"post",
+                                 "fr":"post"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"get",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"get",
+                                 "fr":"get"
+                              }
+                           }
+                        },
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"context",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"context",
+                                 "fr":"context"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"save",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"text",
+               "parameters":{
+                  "labels":{
+                     "en":"|",
+                     "fr":"|"
+                  }
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            },
+            {
+               "type":"submit",
+               "parameters":{
+                  "class":"btn-success"
+               },
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ],
+         "transitions":[
+            {
+               "target":"executed",
+               "labels":{
+                  "en":"Modify API key",
+                  "fr":"Modifier clef API"
+               },
+               "process":"activate",
+               "confirm":{
+                  "required":true,
+                  "title":{
+                     "labels":{
+                        "fr":"titre confirmation annulation",
+                        "en":"confirm title"
+                     }
+                  },
+                  "text":{
+                     "labels":{
+                        "fr":"message confirmation annulation fork",
+                        "en":"confirm text"
+                     }
+                  },
+                  "btn-yes":{
+                     "labels":{
+                        "fr":"btn-oui",
+                        "en":"btn-yes"
+                     }
+                  },
+                  "btn-no":{
+                     "labels":{
+                        "fr":"btn-non",
+                        "en":"btn-no"
+                     }
+                  }
+               }
+            }
+         ]
+      },
+      "executed":{
+         "labels":{
+            "en":"Done",
+            "fr":"Fait"
+         },
+         "tasks":[
+            {
+               "name":"set_entity",
+               "config_file":"task_api_key_update.json"
+            }
+         ],
+         "widgets":[
+            {
+               "name":"user_details",
+               "type":"layout",
+               "columns":[
+                  {
+                     "width":8,
+                     "widgets":[
+                        {
+                           "type":"widget_createdEntity",
+                           "parameters":{
+                              "entity":[
+                                 
+                              ]
+                           }
+                        },
+						{
+                           "type":"widget_filesAttached",
+                           "parameters":{
+                              "allow_upload":false,
+                              "embeded":true,
+                              "ug_file":[
+                                 "admin2",
+                                 "user"
+                              ],
+                              "accepted_format":[
+                                 "application/pdf",
+                                 "text/plain",
+                                 "image/png",
+                                 "image/jpeg"
+                              ],
+                              "labels":{
+                                 "fr":"Fichiers joints",
+                                 "en":"Attached files"
+                              },
+                              "display":"large"
+                           },
+                           "rights":{
+                              "read":[
+                                 
+                              ],
+                              "edit":[
+                                 "super_admin"
+                              ]
+                           }
+                        }
+                     ]
+                  },
+                  {
+                     "width":4,
+                     "widgets":[
+                        {
+                           "name":"abb",
+                           "type":"raw",
+                           "parameters":{
+                              "source":"process",
+                              "comment":"",
+                              "theme":"code_light",
+                              "labels":{
+                                 "en":"context",
+                                 "fr":"context"
+                              }
+                           }
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "button":[
+            {
+               "type":"refresh",
+               "parameters":[
+                  
+               ],
+               "rights":{
+                  "read":[
+                     
+                  ]
+               }
+            }
+         ]
+      }
+   }
+}
