@@ -28,7 +28,8 @@
       "entity":"api_key",
       "key":"key",
       "user_endPointsList":"endPoints",
-	  "endPointURL":"api/v2/"
+	  "endPointURL":"api/v2/",
+	  "tracker":"oui oui"
    },
    "userGroups":{
       "entity":"user_group",
