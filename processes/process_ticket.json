@@ -19,10 +19,13 @@
    "border":false,
    "category":"customer_mgt",
    "available_in":[
-      "page_customersList"
+      "page_customersList",
+	  "page_customerDetails"
    ],
    "context":{
-      "entity":"customer"
+      "function":"getParty",
+      "entity":"customer",
+	  "optionnal":true
    },
    "validationOnLoading":true,
    "return":"erase",
@@ -162,6 +165,17 @@
                      "width":6,
                      "widgets":[
 					 {
+                                 "name":"notifs",
+                                 "type":"widget_notifications",
+                                 "parameters":{
+                                    "embeded":true,
+                                    "labels":{
+                                       "fr":"Notification",
+                                       "en":"Notifs"
+                                    }
+                                 }
+                              },
+					 {
                            "type":"widget_comments",
                            "parameters":{
                               "placeHolder":{
@@ -184,7 +198,7 @@
                               },
                               "embeded":true,
                               "labels":{
-                                 "fr":"Commtaires",
+                                 "fr":"Commentaires",
                                  "en":"Comments"
                               },
                               "maxLength":350

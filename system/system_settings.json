@@ -27,7 +27,8 @@
    "api":{
       "entity":"api_key",
       "key":"key",
-      "user_endPointsList":"endPoints"
+      "user_endPointsList":"endPoints",
+	  "endPointURL":"api/v2/"
    },
    "userGroups":{
       "entity":"user_group",
@@ -114,6 +115,7 @@
       "entity"
    ],
    "notifications":{
+	   "email_in":{"icon":"bi bi-envelope-at"},
       "email":{
          "icon":"bi bi-envelope-at",
          "from":{
